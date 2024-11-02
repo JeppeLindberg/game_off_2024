@@ -19,8 +19,8 @@ var gravity := 0.0
 
 var previously_floored := false
 
-var jump_single := true
-var jump_double := true
+var remote_active := false;
+var remote_active_history := [false, false];
 
 var tween:Tween
 
@@ -50,12 +50,15 @@ func _physics_process(delta):
 	# Movement
 
 	var applied_velocity: Vector3
+
+	if remote_active_history[0]:
+		movement_velocity = Vector3.ZERO
+	else:
+		movement_velocity = transform.basis * movement_velocity # Move forward		
 	
-	movement_velocity = transform.basis * movement_velocity # Move forward
-	
-	applied_velocity = velocity.lerp(movement_velocity, delta * 10)
+	applied_velocity = velocity.lerp(movement_velocity, delta * 10)	
 	applied_velocity.y = -gravity
-	
+		
 	velocity = applied_velocity
 	move_and_slide()
 	
@@ -66,7 +69,19 @@ func _physics_process(delta):
 	camera.rotation.x = lerp_angle(camera.rotation.x, rotation_target.x, delta * 25)
 	rotation.y = lerp_angle(rotation.y, rotation_target.y, delta * 25)
 	
-	remote_controller.position = lerp(remote_controller.position, not_active_point.position - (basis.inverse() * applied_velocity / 30), delta * 10)
+	# Remote
+
+	var target_position = Vector3.ZERO;
+	if remote_active_history[0]:
+		target_position = active_point.position
+	else:
+		target_position = not_active_point.position
+	remote_controller.position = lerp(remote_controller.position, target_position - (basis.inverse() * applied_velocity / 30), delta * 10)
+
+	if remote_active_history[0] == true and remote_active_history[1] == false:
+		remote_controller.activate()
+	elif remote_active_history[0] == false and remote_active_history[1] == true:
+		remote_controller.deactivate()
 	
 	# Movement sound
 	
@@ -128,19 +143,20 @@ func handle_controls(_delta):
 	rotation_target -= Vector3(-rotation_input.y, -rotation_input.x, 0).limit_length(1.0) * gamepad_sensitivity
 	rotation_target.x = clamp(rotation_target.x, deg_to_rad(-90), deg_to_rad(90))
 	
-	# Jumping
+	# Remote
 	
-	if Input.is_action_just_pressed("jump"):
-		
-		if jump_single or jump_double:
-			Audio.play("sounds/jump_a.ogg, sounds/jump_b.ogg, sounds/jump_c.ogg")
-		
-		if jump_double:
-			
-			gravity = -jump_strength
-			jump_double = false
-			
-		if(jump_single): action_jump()
+	if Input.is_action_just_pressed("toggle_remote"):
+		remote_active = !remote_active
+	remote_active_history.pop_back()
+	remote_active_history.push_front(remote_active)
+
+	if Input.is_action_just_pressed('accept'):
+		remote_controller.input_accept()
+	if Input.is_action_just_pressed('move_left'):
+		remote_controller.input_left()
+	if Input.is_action_just_pressed('move_right'):
+		remote_controller.input_right()
+	
 
 # Handle gravity
 
@@ -149,15 +165,5 @@ func handle_gravity(delta):
 	gravity += 20 * delta
 	
 	if gravity > 0 and is_on_floor():
-		
-		jump_single = true
 		gravity = 0
 
-# Jumping
-
-func action_jump():
-	
-	gravity = -jump_strength
-	
-	jump_single = false;
-	jump_double = true;

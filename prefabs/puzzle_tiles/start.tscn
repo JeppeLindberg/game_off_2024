@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://jmq1fi4b3qsf"]
+
+[ext_resource type="PackedScene" uid="uid://boa8j8r3plobq" path="res://models/start.glb" id="1_m0gan"]
+[ext_resource type="Material" uid="uid://b8ux52afjp3pc" path="res://materials/shared_material.tres" id="2_ny1rk"]
+
+[node name="start2" instance=ExtResource("1_m0gan")]
+
+[node name="start" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+surface_material_override/0 = ExtResource("2_ny1rk")

@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://bie5g5ohj3bkl"]
+
+[ext_resource type="Shader" path="res://materials/shaders/canvas_material.gdshader" id="1_2qwrp"]
+[ext_resource type="Texture2D" uid="uid://db16tp4t0vxv6" path="res://materials/shaders/canvas_colors.png" id="2_gkyth"]
+
+[resource]
+shader = ExtResource("1_2qwrp")
+shader_parameter/palette = ExtResource("2_gkyth")

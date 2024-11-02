@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://buckn6m3y5r88"]
+
+[ext_resource type="PackedScene" uid="uid://8vtpgfpws42f" path="res://models/end.glb" id="1_l8c72"]
+[ext_resource type="Material" uid="uid://b8ux52afjp3pc" path="res://materials/shared_material.tres" id="2_em6t4"]
+
+[node name="end2" instance=ExtResource("1_l8c72")]
+
+[node name="end" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+surface_material_override/0 = ExtResource("2_em6t4")
