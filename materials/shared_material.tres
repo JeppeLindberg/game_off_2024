@@ -6,3 +6,4 @@
 resource_name = "shared_material.001"
 cull_mode = 2
 albedo_texture = ExtResource("1_q3uts")
+metallic_specular = 0.0

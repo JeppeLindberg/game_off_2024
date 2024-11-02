@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dg2md2xfi0j5g"]
+
+[ext_resource type="Script" path="res://scripts/puzzle_closeness.gd" id="1_8g4pb"]
+
+[node name="puzzle_closeness" type="Node3D"]
+script = ExtResource("1_8g4pb")

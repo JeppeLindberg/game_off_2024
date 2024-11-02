@@ -20,6 +20,7 @@ background_color = Color(0.360784, 0.392157, 0.462745, 1)
 sky = SubResource("Sky_7bk1c")
 ambient_light_source = 2
 ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.0
 reflected_light_source = 1
 tonemap_mode = 2
 ssao_enabled = true

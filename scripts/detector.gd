@@ -1,16 +1,24 @@
 extends Node3D
 
 var _upright: Basis
+var _puzzle_camera_offset: Vector3
 var valid := true;
 var target_puzzle_node;
+
+@onready var puzzle_camera = get_node('/root/main/puzzle_viewport_container/puzzle_viewport/camera')
+@onready var puzzles = get_node('/root/main/world/puzzles')
+@onready var main = get_node('/root/main')
 
 
 func _ready() -> void:
 	_upright = transform.basis
+	_puzzle_camera_offset = puzzle_camera.global_position - global_position
 
 func set_puzzle(new_target_puzzle):
+	print(new_target_puzzle)
 	target_puzzle_node = get_node('../' + new_target_puzzle)
 	global_position = target_puzzle_node.global_position
+	puzzle_camera.global_position = global_position + _puzzle_camera_offset
 
 	valid = true;
 	for child in target_puzzle_node.get_children():
@@ -29,6 +37,10 @@ func accept():
 
 func complete():
 	if _is_valid():
+		for child in main.get_children_in_groups(puzzles, ['puzzle_closeness']):
+			if child.get_parent().name == target_puzzle_node.name:
+				child.queue_free()
+
 		target_puzzle_node.emit_puzzle_complete()
 
 func _is_valid():
