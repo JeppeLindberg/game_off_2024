@@ -4,12 +4,6 @@ extends CharacterBody3D
 @export var movement_speed = 5
 @export var jump_strength = 8
 
-@export_subgroup("Weapons")
-@export var weapons: Array[Weapon] = []
-
-var weapon: Weapon
-var weapon_index := 0
-
 var mouse_sensitivity = 700
 var gamepad_sensitivity := 0.075
 
@@ -28,18 +22,15 @@ var previously_floored := false
 var jump_single := true
 var jump_double := true
 
-var container_offset = Vector3(1.2, -1.1, -2.75)
-
 var tween:Tween
 
-signal health_updated
-
-@onready var camera = $Head/Camera
-@onready var raycast = $Head/Camera/RayCast
-@onready var muzzle = $Head/Camera/SubViewportContainer/SubViewport/CameraItem/Muzzle
-@onready var container = $Head/Camera/SubViewportContainer/SubViewport/CameraItem/Container
-@onready var sound_footsteps = $SoundFootsteps
-@onready var blaster_cooldown = $Cooldown
+@onready var camera = get_node('head/camera')
+@onready var raycast = get_node('head/camera/forward')
+@onready var remote_controller = get_node('head/camera/sub_viewport_container/sub_viewport/camera/remote')
+@onready var not_active_point = get_node('head/camera/sub_viewport_container/sub_viewport/camera/not_active_point')
+@onready var active_point = get_node('head/camera/sub_viewport_container/sub_viewport/camera/active_point')
+@onready var sound_footsteps = get_node('footsteps')
+@onready var blaster_cooldown = get_node('cooldown')
 
 @export var crosshair:TextureRect
 
@@ -48,8 +39,6 @@ signal health_updated
 func _ready():
 	
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	
-	weapon = weapons[weapon_index] # Weapon must never be nil
 
 func _physics_process(delta):
 	
@@ -77,7 +66,7 @@ func _physics_process(delta):
 	camera.rotation.x = lerp_angle(camera.rotation.x, rotation_target.x, delta * 25)
 	rotation.y = lerp_angle(rotation.y, rotation_target.y, delta * 25)
 	
-	container.position = lerp(container.position, container_offset - (basis.inverse() * applied_velocity / 30), delta * 10)
+	remote_controller.position = lerp(remote_controller.position, not_active_point.position - (basis.inverse() * applied_velocity / 30), delta * 10)
 	
 	# Movement sound
 	
@@ -139,10 +128,6 @@ func handle_controls(_delta):
 	rotation_target -= Vector3(-rotation_input.y, -rotation_input.x, 0).limit_length(1.0) * gamepad_sensitivity
 	rotation_target.x = clamp(rotation_target.x, deg_to_rad(-90), deg_to_rad(90))
 	
-	# Shooting
-	
-	action_shoot()
-	
 	# Jumping
 	
 	if Input.is_action_just_pressed("jump"):
@@ -176,66 +161,3 @@ func action_jump():
 	
 	jump_single = false;
 	jump_double = true;
-
-# Shooting
-
-func action_shoot():
-	
-	if Input.is_action_pressed("shoot"):
-	
-		if !blaster_cooldown.is_stopped(): return # Cooldown for shooting
-		
-		Audio.play(weapon.sound_shoot)
-		
-		container.position.z += 0.25 # Knockback of weapon visual
-		camera.rotation.x += 0.025 # Knockback of camera
-		movement_velocity += Vector3(0, 0, weapon.knockback) # Knockback
-		
-		# Set muzzle flash position, play animation
-		
-		muzzle.play("default")
-		
-		muzzle.rotation_degrees.z = randf_range(-45, 45)
-		muzzle.scale = Vector3.ONE * randf_range(0.40, 0.75)
-		muzzle.position = container.position - weapon.muzzle_position
-		
-		blaster_cooldown.start(weapon.cooldown)
-		
-		# Shoot the weapon, amount based on shot count
-		
-		for n in weapon.shot_count:
-		
-			raycast.target_position.x = randf_range(-weapon.spread, weapon.spread)
-			raycast.target_position.y = randf_range(-weapon.spread, weapon.spread)
-			
-			raycast.force_raycast_update()
-			
-			if !raycast.is_colliding(): continue # Don't create impact when raycast didn't hit
-			
-			var collider = raycast.get_collider()
-			
-			# Hitting an enemy
-			
-			if collider.has_method("damage"):
-				collider.damage(weapon.damage)
-			
-			# Creating an impact animation
-			
-			var impact = preload("res://objects/impact.tscn")
-			var impact_instance = impact.instantiate()
-			
-			impact_instance.play("shot")
-			
-			get_tree().root.add_child(impact_instance)
-			
-			impact_instance.position = raycast.get_collision_point() + (raycast.get_collision_normal() / 10)
-			impact_instance.look_at(camera.global_transform.origin, Vector3.UP, true) 
-
-
-func damage(amount):
-	
-	health -= amount
-	health_updated.emit(health) # Update health on HUD
-	
-	if health < 0:
-		get_tree().reload_current_scene() # Reset when out of health

@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://dlbni03fhwptd"]
+
+[ext_resource type="PackedScene" uid="uid://lgu70t1a8uv3" path="res://models/platform.glb" id="1_0lm70"]
+[ext_resource type="Material" uid="uid://b8ux52afjp3pc" path="res://materials/shared_material.tres" id="2_awq1v"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_k45tj"]
+data = PackedVector3Array(4, 1, -4, -4, 1, 4, -4, 1, -4, 4, 1, -4, 4, 1, 4, -4, 1, 4, 4, -1, 4, -4, 1, 4, 4, 1, 4, 4, -1, 4, -4, -1, 4, -4, 1, 4, -4, -1, 4, -4, 1, -4, -4, 1, 4, -4, -1, 4, -4, -1, -4, -4, 1, -4, -4, -1, -4, 4, -1, 4, 4, -1, -4, -4, -1, -4, -4, -1, 4, 4, -1, 4, 4, -1, -4, 4, 1, 4, 4, 1, -4, 4, -1, -4, 4, -1, 4, 4, 1, 4, -4, -1, -4, 4, 1, -4, -4, 1, -4, -4, -1, -4, 4, -1, -4, 4, 1, -4)
+
+[node name="platform2" instance=ExtResource("1_0lm70")]
+
+[node name="platform" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_awq1v")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="platform" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="platform/StaticBody3D" index="0"]
+shape = SubResource("ConcavePolygonShape3D_k45tj")

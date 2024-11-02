@@ -1,15 +1,14 @@
-[gd_scene load_steps=12 format=3 uid="uid://dxvvlck8lej3f"]
+[gd_scene load_steps=11 format=3 uid="uid://dxvvlck8lej3f"]
 
-[ext_resource type="Environment" uid="uid://jvmpkdwaeaq" path="res://scenes/main-environment.tres" id="1_q8fpv"]
-[ext_resource type="PackedScene" uid="uid://dl2ed4gkybggf" path="res://objects/player.tscn" id="2_elriq"]
+[ext_resource type="Environment" uid="uid://jvmpkdwaeaq" path="res://prefabs/main-environment.tres" id="1_q8fpv"]
+[ext_resource type="PackedScene" uid="uid://dl2ed4gkybggf" path="res://prefabs/player.tscn" id="2_elriq"]
 [ext_resource type="Script" path="res://scripts/hud.gd" id="3_s8mkj"]
 [ext_resource type="FontFile" uid="uid://biqtga8moh7ah" path="res://fonts/lilita_one_regular.ttf" id="3_w27de"]
-[ext_resource type="PackedScene" uid="uid://dpm3l05d7fu35" path="res://objects/platform.tscn" id="5_3s40e"]
-[ext_resource type="PackedScene" uid="uid://r7rt7pth4u7o" path="res://objects/wall_low.tscn" id="5_6vel1"]
-[ext_resource type="PackedScene" uid="uid://c71evdjblk5wp" path="res://objects/wall_high.tscn" id="7_cabne"]
-[ext_resource type="PackedScene" uid="uid://bvx5cvigosg0s" path="res://objects/platform_large_grass.tscn" id="7_wggef"]
-[ext_resource type="PackedScene" uid="uid://d2g78tpqbyf5g" path="res://objects/enemy.tscn" id="8_7ty2f"]
-[ext_resource type="PackedScene" uid="uid://oqfhfp1a80qd" path="res://objects/cloud.tscn" id="10_5ksau"]
+[ext_resource type="PackedScene" uid="uid://dpm3l05d7fu35" path="res://prefabs/platform_old.tscn" id="5_3s40e"]
+[ext_resource type="PackedScene" uid="uid://r7rt7pth4u7o" path="res://prefabs/wall_low.tscn" id="5_6vel1"]
+[ext_resource type="PackedScene" uid="uid://c71evdjblk5wp" path="res://prefabs/wall_high.tscn" id="7_cabne"]
+[ext_resource type="PackedScene" uid="uid://bvx5cvigosg0s" path="res://prefabs/platform_large_grass.tscn" id="7_wggef"]
+[ext_resource type="PackedScene" uid="uid://oqfhfp1a80qd" path="res://prefabs/cloud.tscn" id="10_5ksau"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_fpmwk"]
 font = ExtResource("3_w27de")
@@ -61,21 +60,57 @@ vertical_alignment = 2
 
 [node name="Enemies" type="Node" parent="."]
 
-[node name="enemy-flying" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("8_7ty2f")]
+[node name="enemy-flying" parent="Enemies"]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 2.5, -6)
-player = NodePath("../../Player")
+script = null
 
-[node name="enemy-flying2" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("8_7ty2f")]
+[node name="enemy-flying2" parent="Enemies"]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.5, 2.5, 1.5)
-player = NodePath("../../Player")
+script = null
 
-[node name="enemy-flying3" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("8_7ty2f")]
+[node name="enemy-flying3" parent="Enemies"]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
 transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 5.5, 3.5, 9)
-player = NodePath("../../Player")
+script = null
 
-[node name="enemy-flying4" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("8_7ty2f")]
+[node name="enemy-flying4" parent="Enemies"]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 15.5, 4, -7.5)
-player = NodePath("../../Player")
+script = null
 
 [node name="Level" type="Node" parent="."]
 

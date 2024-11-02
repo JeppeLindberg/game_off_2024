@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://84xfupcwvo8l"]
+
+[ext_resource type="Material" uid="uid://b8ux52afjp3pc" path="res://materials/shared_material.tres" id="1_hodt0"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_xwwi1"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_hpm3i"]
+
+[node name="remote" type="Node3D"]
+
+[node name="mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.390964, 0, 0, 0, 0.769277, 0, 0, 0, 0.188515, 0, 0, 0)
+layers = 2
+mesh = SubResource("BoxMesh_xwwi1")
+
+[node name="indicator" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.182687, 0.104131)
+
+[node name="mesh" type="MeshInstance3D" parent="indicator"]
+transform = Transform3D(0.195081, 0, 0, 0, 0.309236, 0, 0, 0, 0.0511643, 0, 0.0983648, 0)
+layers = 2
+mesh = SubResource("PrismMesh_hpm3i")
+surface_material_override/0 = ExtResource("1_hodt0")
