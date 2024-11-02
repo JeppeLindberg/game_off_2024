@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cgo71qjuto0ac"]
+[gd_scene load_steps=17 format=3 uid="uid://cgo71qjuto0ac"]
 
 [ext_resource type="Script" path="res://scripts/detector.gd" id="1_1tsug"]
 [ext_resource type="PackedScene" uid="uid://dl2ed4gkybggf" path="res://prefabs/player.tscn" id="2_elriq"]
@@ -10,6 +10,9 @@
 [ext_resource type="Material" uid="uid://bie5g5ohj3bkl" path="res://materials/canvas_material.tres" id="6_x8mu3"]
 [ext_resource type="PackedScene" uid="uid://drupxdrx5fjlj" path="res://prefabs/door.tscn" id="8_ieiih"]
 [ext_resource type="PackedScene" uid="uid://v7yeeeprs686" path="res://prefabs/doorframe_2.tscn" id="8_rguxw"]
+[ext_resource type="PackedScene" uid="uid://buypaf837oyoj" path="res://prefabs/wall_brick_1.tscn" id="9_sxwo2"]
+[ext_resource type="PackedScene" uid="uid://d0i5lxylf6xt8" path="res://prefabs/wall_brick_2.tscn" id="10_v65yq"]
+[ext_resource type="Script" path="res://scripts/puzzle_signal_emitter.gd" id="11_q5ens"]
 [ext_resource type="PackedScene" uid="uid://c6707jxtpm46e" path="res://prefabs/puzzle_tiles/straight_node.tscn" id="11_rm1dj"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_htnlf"]
@@ -46,15 +49,15 @@ light_specular = 1.0
 omni_range = 4.0
 omni_attenuation = 0.0
 
-[node name="1_A" type="Node3D" parent="world/static"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.32088, 2, -2.42183)
+[node name="A_1" type="Node3D" parent="world/static"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.50544, 2, -2.68735)
 
-[node name="end2" parent="world/static/1_A" instance=ExtResource("5_hcvri")]
+[node name="end2" parent="world/static/A_1" instance=ExtResource("5_hcvri")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
-[node name="straight2" parent="world/static/1_A" instance=ExtResource("6_ulbid")]
+[node name="straight2" parent="world/static/A_1" instance=ExtResource("6_ulbid")]
 
-[node name="start2" parent="world/static/1_A" instance=ExtResource("5_m1fgw")]
+[node name="start2" parent="world/static/A_1" instance=ExtResource("5_m1fgw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 
 [node name="platform_brick5" parent="world/static" instance=ExtResource("6_r32jv")]
@@ -73,6 +76,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1, -4)
 
 [node name="door2" parent="world/static/doorframe_2" instance=ExtResource("8_ieiih")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45339, 0, 0)
+
+[node name="wall_brick_12" parent="world/static" instance=ExtResource("9_sxwo2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -4)
+
+[node name="wall_brick_22" parent="world/static" instance=ExtResource("10_v65yq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1, -4)
 
 [node name="canvas_layer" type="CanvasLayer" parent="."]
 
@@ -111,6 +120,12 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1.1
 layers = 4
 mesh = SubResource("PrismMesh_q3rqx")
 
-[node name="1_A" type="Node3D" parent="puzzle_viewport_container/puzzle_viewport/camera/puzzles"]
+[node name="A_1" type="Node3D" parent="puzzle_viewport_container/puzzle_viewport/camera/puzzles"]
+script = ExtResource("11_q5ens")
 
-[node name="straight_node" parent="puzzle_viewport_container/puzzle_viewport/camera/puzzles/1_A" instance=ExtResource("11_rm1dj")]
+[node name="straight_node" parent="puzzle_viewport_container/puzzle_viewport/camera/puzzles/A_1" instance=ExtResource("11_rm1dj")]
+
+[node name="straight_node2" parent="puzzle_viewport_container/puzzle_viewport/camera/puzzles/A_1" instance=ExtResource("11_rm1dj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+
+[connection signal="puzzle_complete" from="puzzle_viewport_container/puzzle_viewport/camera/puzzles/A_1" to="world/static/doorframe_2/door2" method="open_door"]

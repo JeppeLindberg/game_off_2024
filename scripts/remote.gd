@@ -9,10 +9,13 @@ var active = false
 
 func activate():
 	active = true
+	detector.detector_set_rotation(indicator.target_rotation)
+	detector.set_puzzle('A_1')
 
 func deactivate():
 	active = false
 	indicator.target_rotation = 0
+	detector.complete()
 
 func input_accept():
 	if not active:
