@@ -50,12 +50,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.10501, -0.793442, -2.75)
 [node name="active_point" type="Node3D" parent="head/camera/sub_viewport_container/sub_viewport/camera"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.320237, -2.75)
 
+[node name="active_point_deactivating" type="Node3D" parent="head/camera/sub_viewport_container/sub_viewport/camera"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00673571, -2.75)
+
 [node name="remote" parent="head/camera/sub_viewport_container/sub_viewport/camera" instance=ExtResource("2_8h0rr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.31013, -0.377568, -2.42658)
 
 [node name="forward" type="RayCast3D" parent="head/camera"]
 exclude_parent = false
-target_position = Vector3(0, 0, -2)
+target_position = Vector3(0, 0, -3)
 collide_with_areas = true
 
 [node name="shadow" type="Decal" parent="."]

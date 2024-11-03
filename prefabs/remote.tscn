@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://84xfupcwvo8l"]
+[gd_scene load_steps=8 format=3 uid="uid://84xfupcwvo8l"]
 
 [ext_resource type="Script" path="res://scripts/remote.gd" id="1_8i1lf"]
 [ext_resource type="Script" path="res://scripts/indicator.gd" id="2_vxnfs"]
@@ -7,8 +7,13 @@
 [ext_resource type="Texture2D" uid="uid://biqtj7jnv03yu" path="res://sprites/shine.png" id="5_am0sf"]
 [ext_resource type="Script" path="res://scripts/shine.gd" id="5_ny1tt"]
 
+[sub_resource type="Curve" id="Curve_54ys1"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.153465, 1), 0.0, 0.0, 0, 0, Vector2(0.331683, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
 [node name="remote" type="Node3D"]
 script = ExtResource("1_8i1lf")
+glow_curve = SubResource("Curve_54ys1")
 
 [node name="artifact_base" parent="." instance=ExtResource("4_rpnet")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)

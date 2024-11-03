@@ -22,16 +22,20 @@ var previously_floored := false
 var holding_remote := false;
 var remote_active := false;
 var remote_active_history := [false, false];
+var use_deactivating_position_until := 0.0
 
 var tween:Tween
 
 @onready var camera = get_node('head/camera')
-@onready var raycast: RayCast3D = get_node('head/camera/forward')
+@onready var forward: RayCast3D = get_node('head/camera/forward')
 @onready var remote_controller = get_node('head/camera/sub_viewport_container/sub_viewport/camera/remote')
 @onready var not_active_point = get_node('head/camera/sub_viewport_container/sub_viewport/camera/not_active_point')
 @onready var active_point = get_node('head/camera/sub_viewport_container/sub_viewport/camera/active_point')
+@onready var active_point_deactivating = get_node('head/camera/sub_viewport_container/sub_viewport/camera/active_point_deactivating')
 @onready var sound_footsteps = get_node('footsteps')
 @onready var blaster_cooldown = get_node('cooldown')
+@onready var main = get_node('/root/main')
+@onready var hud_text = get_node('/root/main/hud/text_container/text')
 
 @export var crosshair:TextureRect
 
@@ -74,17 +78,21 @@ func _physics_process(delta):
 
 	remote_controller.visible = holding_remote
 
+	if remote_active_history[0] == true and remote_active_history[1] == false:
+		remote_controller.activate()
+	elif remote_active_history[0] == false and remote_active_history[1] == true:
+		if remote_controller.deactivate():
+			use_deactivating_position_until = main.curr_secs() + 1.0
+
 	var target_position = Vector3.ZERO;
 	if remote_active_history[0]:
 		target_position = active_point.position
 	else:
-		target_position = not_active_point.position
+		if main.curr_secs() < use_deactivating_position_until:
+			target_position = active_point_deactivating.position
+		else:
+			target_position = not_active_point.position
 	remote_controller.position = lerp(remote_controller.position, target_position - (basis.inverse() * applied_velocity / 30), delta * 10)
-
-	if remote_active_history[0] == true and remote_active_history[1] == false:
-		remote_controller.activate()
-	elif remote_active_history[0] == false and remote_active_history[1] == true:
-		remote_controller.deactivate()
 	
 	# Movement sound
 	
@@ -151,11 +159,12 @@ func handle_controls(_delta):
 	# Interact
 
 	var interacted = false
-	if not remote_active:
-		if Input.is_action_just_pressed("interact"):
-			var node = raycast.get_collider()
-			if node != null and node.is_in_group('interactable'):
-				interacted = node.interact()
+	hud_text.text = '';
+	var intractable_node = forward.get_collider()
+	if intractable_node != null and intractable_node.is_in_group('interactable'):
+		hud_text.text = intractable_node.get_interactable_popup()
+		if not holding_remote and Input.is_action_just_pressed("interact"):
+			interacted = intractable_node.interact()
 	
 	# Remote
 	
