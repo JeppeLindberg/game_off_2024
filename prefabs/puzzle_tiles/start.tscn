@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://jmq1fi4b3qsf"]
 
-[ext_resource type="PackedScene" uid="uid://boa8j8r3plobq" path="res://models/start.glb" id="1_m0gan"]
+[ext_resource type="PackedScene" uid="uid://boa8j8r3plobq" path="res://models/puzzle_start.glb" id="1_m0gan"]
 [ext_resource type="Material" uid="uid://cxirseqcstjsf" path="res://materials/shared_material_unlit.tres" id="2_5w4qx"]
 
 [node name="start" instance=ExtResource("1_m0gan")]

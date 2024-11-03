@@ -22,7 +22,7 @@ func set_puzzle(new_target_puzzle):
 
 	valid = true;
 	for child in target_puzzle_node.get_children():
-		child.valid = false
+		child.reset();
 
 func accept():
 	position += -transform.basis.z

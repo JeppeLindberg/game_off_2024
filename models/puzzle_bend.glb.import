@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://8vtpgfpws42f"
-path="res://.godot/imported/end.glb-e31000863c47fe5fc4d9e82ad5fae092.scn"
+uid="uid://c5y6fkrumjcuo"
+path="res://.godot/imported/puzzle_bend.glb-0bd8ee351be8e715766732fac1e83dfa.scn"
 
 [deps]
 
-source_file="res://models/end.glb"
-dest_files=["res://.godot/imported/end.glb-e31000863c47fe5fc4d9e82ad5fae092.scn"]
+source_file="res://models/puzzle_bend.glb"
+dest_files=["res://.godot/imported/puzzle_bend.glb-0bd8ee351be8e715766732fac1e83dfa.scn"]
 
 [params]
 

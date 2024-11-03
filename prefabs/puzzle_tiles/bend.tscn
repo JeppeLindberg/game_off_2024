@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4b836x5g55rf"]
+
+[ext_resource type="PackedScene" uid="uid://c5y6fkrumjcuo" path="res://models/puzzle_bend.glb" id="1_uylxt"]
+[ext_resource type="Material" uid="uid://cxirseqcstjsf" path="res://materials/shared_material_unlit.tres" id="2_l1jle"]
+
+[node name="puzzle_bend" instance=ExtResource("1_uylxt")]
+
+[node name="puzzle_bend" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+surface_material_override/0 = ExtResource("2_l1jle")

@@ -22,7 +22,8 @@ func activate():
 			target_puzzle = child.get_parent().name
 			closest_distance = distance
 
-	detector.set_puzzle(target_puzzle)
+	if closest_distance < 30:
+		detector.set_puzzle(target_puzzle)
 
 func deactivate():
 	active = false
@@ -32,6 +33,8 @@ func deactivate():
 func input_accept():
 	if not active:
 		return
+
+	indicator.spin()
 	detector.accept()
 
 func input_left():

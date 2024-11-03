@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bev6j0sqh7uwm"]
+
+[ext_resource type="PackedScene" uid="uid://j8soisnqrs43" path="res://models/poster_2.glb" id="1_r7duh"]
+[ext_resource type="Material" uid="uid://cxirseqcstjsf" path="res://materials/shared_material_unlit.tres" id="2_3wmb4"]
+
+[node name="poster_2" instance=ExtResource("1_r7duh")]
+
+[node name="poster_2" parent="." index="0"]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
+surface_material_override/0 = ExtResource("2_3wmb4")

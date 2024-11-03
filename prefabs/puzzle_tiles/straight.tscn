@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bsnxf6nmsw2k5"]
 
-[ext_resource type="PackedScene" uid="uid://ct4bwckccfe1d" path="res://models/straight.glb" id="1_s5n3v"]
+[ext_resource type="PackedScene" uid="uid://ct4bwckccfe1d" path="res://models/puzzle_straight.glb" id="1_s5n3v"]
 [ext_resource type="Material" uid="uid://cxirseqcstjsf" path="res://materials/shared_material_unlit.tres" id="2_6sh0d"]
 
 [node name="straight" instance=ExtResource("1_s5n3v")]

@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://ct4bwckccfe1d"
-path="res://.godot/imported/straight.glb-954ee5fad6b059d29a4fccf1d76a8064.scn"
+path="res://.godot/imported/puzzle_straight.glb-4730c4b4172e9d756d33a44e8d3077ed.scn"
 
 [deps]
 
-source_file="res://models/straight.glb"
-dest_files=["res://.godot/imported/straight.glb-954ee5fad6b059d29a4fccf1d76a8064.scn"]
+source_file="res://models/puzzle_straight.glb"
+dest_files=["res://.godot/imported/puzzle_straight.glb-4730c4b4172e9d756d33a44e8d3077ed.scn"]
 
 [params]
 
