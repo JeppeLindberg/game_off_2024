@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://c744pvxo5801r"]
+
+[ext_resource type="PackedScene" uid="uid://bax50udb5aohx" path="res://models/artifact_arrow.glb" id="1_gnv2m"]
+[ext_resource type="Material" uid="uid://cxirseqcstjsf" path="res://materials/shared_material_unlit.tres" id="2_k2ibj"]
+
+[node name="artifact_arrow" instance=ExtResource("1_gnv2m")]
+
+[node name="artifact_arrow" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+layers = 2
+surface_material_override/0 = ExtResource("2_k2ibj")

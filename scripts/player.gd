@@ -19,13 +19,14 @@ var gravity := 0.0
 
 var previously_floored := false
 
+var holding_remote := false;
 var remote_active := false;
 var remote_active_history := [false, false];
 
 var tween:Tween
 
 @onready var camera = get_node('head/camera')
-@onready var raycast = get_node('head/camera/forward')
+@onready var raycast: RayCast3D = get_node('head/camera/forward')
 @onready var remote_controller = get_node('head/camera/sub_viewport_container/sub_viewport/camera/remote')
 @onready var not_active_point = get_node('head/camera/sub_viewport_container/sub_viewport/camera/not_active_point')
 @onready var active_point = get_node('head/camera/sub_viewport_container/sub_viewport/camera/active_point')
@@ -71,6 +72,8 @@ func _physics_process(delta):
 	
 	# Remote
 
+	remote_controller.visible = holding_remote
+
 	var target_position = Vector3.ZERO;
 	if remote_active_history[0]:
 		target_position = active_point.position
@@ -105,6 +108,8 @@ func _physics_process(delta):
 	
 	if position.y < -10:
 		get_tree().reload_current_scene()
+
+	
 
 # Mouse movement
 
@@ -142,20 +147,30 @@ func handle_controls(_delta):
 	
 	rotation_target -= Vector3(-rotation_input.y, -rotation_input.x, 0).limit_length(1.0) * gamepad_sensitivity
 	rotation_target.x = clamp(rotation_target.x, deg_to_rad(-90), deg_to_rad(90))
+
+	# Interact
+
+	var interacted = false
+	if not remote_active:
+		if Input.is_action_just_pressed("interact"):
+			var node = raycast.get_collider()
+			if node != null and node.is_in_group('interactable'):
+				interacted = node.interact()
 	
 	# Remote
 	
-	if Input.is_action_just_pressed("toggle_remote"):
-		remote_active = !remote_active
-	remote_active_history.pop_back()
-	remote_active_history.push_front(remote_active)
+	if holding_remote and not interacted:
+		if Input.is_action_just_pressed("toggle_remote"):
+			remote_active = !remote_active
+		remote_active_history.pop_back()
+		remote_active_history.push_front(remote_active)
 
-	if Input.is_action_just_pressed('accept'):
-		remote_controller.input_accept()
-	if Input.is_action_just_pressed('move_left'):
-		remote_controller.input_left()
-	if Input.is_action_just_pressed('move_right'):
-		remote_controller.input_right()
+		if Input.is_action_just_pressed('accept'):
+			remote_controller.input_accept()
+		if Input.is_action_just_pressed('move_left'):
+			remote_controller.input_left()
+		if Input.is_action_just_pressed('move_right'):
+			remote_controller.input_right()
 	
 
 # Handle gravity

@@ -1,27 +1,19 @@
-[gd_scene load_steps=6 format=3 uid="uid://84xfupcwvo8l"]
+[gd_scene load_steps=5 format=3 uid="uid://84xfupcwvo8l"]
 
 [ext_resource type="Script" path="res://scripts/remote.gd" id="1_8i1lf"]
-[ext_resource type="Material" uid="uid://b8ux52afjp3pc" path="res://materials/shared_material.tres" id="1_hodt0"]
 [ext_resource type="Script" path="res://scripts/indicator.gd" id="2_vxnfs"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_xwwi1"]
-
-[sub_resource type="PrismMesh" id="PrismMesh_hpm3i"]
+[ext_resource type="PackedScene" uid="uid://c744pvxo5801r" path="res://prefabs/artifact_arrow.tscn" id="4_mr3uk"]
+[ext_resource type="PackedScene" uid="uid://q6q6wnnv2dy2" path="res://prefabs/artifact_base.tscn" id="4_rpnet"]
 
 [node name="remote" type="Node3D"]
 script = ExtResource("1_8i1lf")
 
-[node name="mesh" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.390964, 0, 0, 0, 0.769277, 0, 0, 0, 0.188515, 0, 0, 0)
-layers = 2
-mesh = SubResource("BoxMesh_xwwi1")
+[node name="artifact_base" parent="." instance=ExtResource("4_rpnet")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
 
 [node name="indicator" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.182687, 0.104131)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0419497)
 script = ExtResource("2_vxnfs")
 
-[node name="mesh" type="MeshInstance3D" parent="indicator"]
-transform = Transform3D(0.195081, 0, 0, 0, 0.309236, 0, 0, 0, 0.0511643, 0, 0.0983648, 0)
-layers = 2
-mesh = SubResource("PrismMesh_hpm3i")
-surface_material_override/0 = ExtResource("1_hodt0")
+[node name="artifact_arrow" parent="indicator" instance=ExtResource("4_mr3uk")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0.0687544, 0)

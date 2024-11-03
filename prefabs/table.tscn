@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://bb3djiwvud8kc"]
+
+[ext_resource type="PackedScene" uid="uid://y48eid2dyboq" path="res://models/table.glb" id="1_rftcb"]
+[ext_resource type="Material" uid="uid://b8ux52afjp3pc" path="res://materials/shared_material.tres" id="2_xi6t2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_n1f86"]
+size = Vector3(3.20123, 0.938416, 1.92981)
+
+[node name="table" instance=ExtResource("1_rftcb")]
+
+[node name="table" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+surface_material_override/0 = ExtResource("2_xi6t2")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="table" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="table/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00790405, 0.477936, -0.0043335)
+shape = SubResource("BoxShape3D_n1f86")

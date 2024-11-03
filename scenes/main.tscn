@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cgo71qjuto0ac"]
+[gd_scene load_steps=25 format=3 uid="uid://cgo71qjuto0ac"]
 
 [ext_resource type="Script" path="res://scripts/detector.gd" id="1_1tsug"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_swx5x"]
@@ -19,6 +19,8 @@
 [ext_resource type="PackedScene" uid="uid://c6707jxtpm46e" path="res://prefabs/puzzle_tiles/straight_node.tscn" id="11_rm1dj"]
 [ext_resource type="Shader" path="res://materials/shaders/canvas_material.gdshader" id="13_1okk7"]
 [ext_resource type="Texture2D" uid="uid://ogi8m3wp6jl6" path="res://materials/shaders/canvas_colors.png" id="14_hauu7"]
+[ext_resource type="PackedScene" uid="uid://bb3djiwvud8kc" path="res://prefabs/table.tscn" id="15_aurmh"]
+[ext_resource type="PackedScene" uid="uid://cfxhogeel7mry" path="res://prefabs/remote_pickup.tscn" id="16_oqjf4"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ur61g"]
 shader = ExtResource("13_1okk7")
@@ -45,8 +47,12 @@ environment = ExtResource("3_33g8e")
 [node name="sun" type="DirectionalLight3D" parent="world"]
 transform = Transform3D(-0.422618, -0.694272, 0.582563, 0, 0.642788, 0.766044, -0.906308, 0.323744, -0.271654, 0, 0, 0)
 light_energy = 10.0
+light_indirect_energy = 0.0
 shadow_enabled = true
 shadow_opacity = 0.75
+
+[node name="remote_pickup" parent="world" instance=ExtResource("16_oqjf4")]
+transform = Transform3D(0.856781, 0, -0.515681, 0, 1, 0, 0.515681, 0, 0.856781, -0.844221, 0.682045, -13.9296)
 
 [node name="puzzles" type="Node3D" parent="world"]
 
@@ -54,6 +60,9 @@ shadow_opacity = 0.75
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.23012, 1, -5.34259)
 
 [node name="puzzle_closeness" parent="world/puzzles/A_1" instance=ExtResource("4_w55mr")]
+
+[node name="puzzle_closeness2" parent="world/puzzles/A_1" instance=ExtResource("4_w55mr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.2592, 0, 2.27123)
 
 [node name="end2" parent="world/puzzles/A_1" instance=ExtResource("5_hcvri")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -66,6 +75,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 [node name="A_2" type="Node3D" parent="world/puzzles"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4.82127, 1.13942, -23.9161)
 
+[node name="puzzle_closeness" parent="world/puzzles/A_2" instance=ExtResource("4_w55mr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.62921)
+
 [node name="end2" parent="world/puzzles/A_2" instance=ExtResource("5_hcvri")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 
@@ -77,18 +89,24 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 [node name="start2" parent="world/puzzles/A_2" instance=ExtResource("5_m1fgw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 
-[node name="puzzle_closeness" parent="world/puzzles/A_2" instance=ExtResource("4_w55mr")]
-
 [node name="static" type="Node3D" parent="world"]
 
 [node name="OmniLight3D" type="OmniLight3D" parent="world/static"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.64691, 3.18919, -8.18983)
 light_specular = 0.0
+shadow_enabled = true
 omni_range = 4.36307
 omni_attenuation = -2.0
 
+[node name="OmniLight3D3" type="OmniLight3D" parent="world/static"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.264168, 2.00051, -13.1241)
+light_specular = 0.0
+shadow_enabled = true
+omni_range = 3.64593
+omni_attenuation = -2.0
+
 [node name="OmniLight3D2" type="OmniLight3D" parent="world/static"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -7.96776, 3.18919, -25.4445)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -7.50641, 3.18919, -25.4445)
 light_specular = 0.0
 omni_range = 4.36307
 omni_attenuation = -2.0
@@ -169,10 +187,10 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -11, 0
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4.45723, 4, -16.1898)
 
 [node name="wall_brick_24" parent="world/static" instance=ExtResource("9_sxwo2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.457226, 0, -20.1898)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.457226, 0, -16.09)
 
 [node name="wall_brick_25" parent="world/static" instance=ExtResource("9_sxwo2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.457226, 4, -20.1898)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.457226, 4, -16.09)
 
 [node name="wall_brick_13" parent="world/static" instance=ExtResource("9_sxwo2")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.54277, 4, -0.189834)
@@ -230,6 +248,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45339, 0, 0)
 
 [node name="wall_brick_31" parent="world/static" instance=ExtResource("10_v65yq")]
 transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, -7.54277, 0, -28.1898)
+
+[node name="table" parent="world/static" instance=ExtResource("15_aurmh")]
+transform = Transform3D(0.931786, 0, 0.363007, 0, 1, 0, -0.363007, 0, 0.931786, -1.29205, -0.266274, -14.0303)
 
 [node name="canvas_layer" type="CanvasLayer" parent="."]
 
