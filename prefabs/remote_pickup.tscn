@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=4 uid="uid://cfxhogeel7mry"]
+[gd_scene load_steps=11 format=4 uid="uid://cfxhogeel7mry"]
 
 [ext_resource type="Script" path="res://scripts/remote_pickup.gd" id="1_84h78"]
+[ext_resource type="PackedScene" uid="uid://cvhre5miggrvy" path="res://models/artifact_base_2.glb" id="2_hcy6p"]
 [ext_resource type="Material" uid="uid://b8ux52afjp3pc" path="res://materials/shared_material.tres" id="2_vrpg1"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_yseh2"]
@@ -86,10 +87,18 @@ light_specular = 1.0
 shadow_enabled = true
 omni_range = 2.43603
 
-[node name="artifact_base" type="Node3D" parent="."]
+[node name="artifact_base" parent="." instance=ExtResource("2_hcy6p")]
 transform = Transform3D(0.3, 0, 0, 0, 0.026058, 0.298866, 0, -0.298866, 0.026058, 0, 0.110967, 0.0375795)
 
-[node name="artifact_base" type="MeshInstance3D" parent="artifact_base"]
+[node name="artifact_base_2" parent="artifact_base" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+surface_material_override/0 = ExtResource("2_vrpg1")
+
+[node name="artifact_base_old" type="Node3D" parent="."]
+transform = Transform3D(0.3, 0, 0, 0, 0.026058, 0.298866, 0, -0.298866, 0.026058, 0, 0.110967, 0.0375795)
+visible = false
+
+[node name="artifact_base" type="MeshInstance3D" parent="artifact_base_old"]
 mesh = SubResource("ArrayMesh_35bkn")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("2_vrpg1")
@@ -101,3 +110,5 @@ transform = Transform3D(0.25, 0, 0, 0, 0.021715, 0.249055, 0, -0.249055, 0.02171
 mesh = SubResource("ArrayMesh_snnrw")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("2_vrpg1")
+
+[editable path="artifact_base"]

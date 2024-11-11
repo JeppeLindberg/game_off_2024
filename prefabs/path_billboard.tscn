@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bvuf1t6c8gf6v"]
+
+[ext_resource type="PackedScene" uid="uid://dgbu10bfwosrp" path="res://models/path_billboard.glb" id="1_b5s4h"]
+
+[node name="path_billboard" instance=ExtResource("1_b5s4h")]
+
+[node name="path_billboard" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 0, 0)

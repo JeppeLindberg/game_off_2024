@@ -1,22 +1,37 @@
-[gd_scene load_steps=8 format=3 uid="uid://84xfupcwvo8l"]
+[gd_scene load_steps=12 format=3 uid="uid://84xfupcwvo8l"]
 
 [ext_resource type="Script" path="res://scripts/remote.gd" id="1_8i1lf"]
+[ext_resource type="PackedScene" uid="uid://cgip33o3bf8in" path="res://prefabs/artifact_base_2.tscn" id="2_2nqvk"]
 [ext_resource type="Script" path="res://scripts/indicator.gd" id="2_vxnfs"]
 [ext_resource type="PackedScene" uid="uid://c744pvxo5801r" path="res://prefabs/artifact_arrow.tscn" id="4_mr3uk"]
 [ext_resource type="PackedScene" uid="uid://q6q6wnnv2dy2" path="res://prefabs/artifact_base.tscn" id="4_rpnet"]
 [ext_resource type="Texture2D" uid="uid://biqtj7jnv03yu" path="res://sprites/shine.png" id="5_am0sf"]
 [ext_resource type="Script" path="res://scripts/shine.gd" id="5_ny1tt"]
+[ext_resource type="PackedScene" uid="uid://bvuf1t6c8gf6v" path="res://prefabs/path_billboard.tscn" id="8_lojh2"]
 
 [sub_resource type="Curve" id="Curve_54ys1"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.153465, 1), 0.0, 0.0, 0, 0, Vector2(0.331683, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.153465, 1), 0.0, 0.0, 0, 0, Vector2(0.633663, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 4
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_okhw7"]
+viewport_path = NodePath("path_viewport_container/path_viewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x6uyl"]
+resource_local_to_scene = true
+transparency = 1
+shading_mode = 0
+albedo_texture = SubResource("ViewportTexture_okhw7")
 
 [node name="remote" type="Node3D"]
 script = ExtResource("1_8i1lf")
 glow_curve = SubResource("Curve_54ys1")
 
-[node name="artifact_base" parent="." instance=ExtResource("4_rpnet")]
+[node name="artifact_base" parent="." instance=ExtResource("2_2nqvk")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+
+[node name="artifact_base_old" parent="." instance=ExtResource("4_rpnet")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+visible = false
 
 [node name="indicator" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0419497)
@@ -51,3 +66,76 @@ script = ExtResource("5_ny1tt")
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.59141, 0.154357)
 layers = 2
 texture = ExtResource("5_am0sf")
+
+[node name="shine4" type="Node3D" parent="shine_container"]
+script = ExtResource("5_ny1tt")
+
+[node name="sprite" type="Sprite3D" parent="shine_container/shine4"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.59141, 0.154357)
+layers = 2
+texture = ExtResource("5_am0sf")
+
+[node name="shine5" type="Node3D" parent="shine_container"]
+script = ExtResource("5_ny1tt")
+
+[node name="sprite" type="Sprite3D" parent="shine_container/shine5"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.59141, 0.154357)
+layers = 2
+texture = ExtResource("5_am0sf")
+
+[node name="path_container" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.164915)
+
+[node name="path_billboard" parent="path_container" instance=ExtResource("8_lojh2")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+
+[node name="path_billboard" parent="path_container/path_billboard" index="0"]
+layers = 2
+surface_material_override/0 = SubResource("StandardMaterial3D_x6uyl")
+
+[node name="path_viewport_container" type="SubViewportContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="path_viewport" type="SubViewport" parent="path_viewport_container"]
+transparent_bg = true
+handle_input_locally = false
+canvas_cull_mask = 4294966280
+size = Vector2i(1280, 720)
+render_target_update_mode = 4
+
+[node name="center" type="Control" parent="path_viewport_container/path_viewport"]
+light_mask = 8
+visibility_layer = 8
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="path_viewport_container/path_viewport/center"]
+light_mask = 8
+visibility_layer = 8
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+use_top_left = true
+
+[node name="TextureRect" type="TextureRect" parent="path_viewport_container/path_viewport/center/CenterContainer"]
+light_mask = 8
+visibility_layer = 8
+layout_mode = 2
+texture = ExtResource("5_am0sf")
+
+[editable path="path_container/path_billboard"]

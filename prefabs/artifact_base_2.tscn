@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://cgip33o3bf8in"]
+
+[ext_resource type="PackedScene" uid="uid://cvhre5miggrvy" path="res://models/artifact_base_2.glb" id="1_cuubs"]
+[ext_resource type="Material" uid="uid://cxirseqcstjsf" path="res://materials/shared_material_unlit.tres" id="2_65cpw"]
+
+[node name="artifact_base_2" instance=ExtResource("1_cuubs")]
+
+[node name="artifact_base_2" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+layers = 2
+surface_material_override/0 = ExtResource("2_65cpw")

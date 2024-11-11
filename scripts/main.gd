@@ -2,6 +2,7 @@ extends Node
 
 var _result
 
+@onready var rand = RandomNumberGenerator.new()
 @onready var player = get_node('/root/main/world/player')
 @onready var player_spawn = get_node('/root/main/world/player_spawn')
 @onready var puzzle_viewport_container = get_node('/root/main/puzzle_viewport_container')

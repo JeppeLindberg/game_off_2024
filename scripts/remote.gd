@@ -47,6 +47,8 @@ func deactivate():
 	indicator.target_rotation = 0
 	if accept_recieved:
 		glow_start_time = main.curr_secs()
+		for child in shine_container.get_children():
+			child.initialized = false
 
 	detector.complete()
 
