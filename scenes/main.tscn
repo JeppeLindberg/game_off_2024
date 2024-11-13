@@ -46,6 +46,7 @@ material = SubResource("StandardMaterial3D_htnlf")
 
 [node name="main" type="Node"]
 script = ExtResource("1_swx5x")
+debug_mode = true
 
 [node name="world" type="Node3D" parent="."]
 
