@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://84xfupcwvo8l"]
+[gd_scene load_steps=13 format=3 uid="uid://84xfupcwvo8l"]
 
 [ext_resource type="Script" path="res://scripts/remote.gd" id="1_8i1lf"]
 [ext_resource type="PackedScene" uid="uid://cgip33o3bf8in" path="res://prefabs/artifact_base_2.tscn" id="2_2nqvk"]
@@ -8,26 +8,20 @@
 [ext_resource type="Texture2D" uid="uid://biqtj7jnv03yu" path="res://sprites/shine.png" id="5_am0sf"]
 [ext_resource type="Script" path="res://scripts/shine.gd" id="5_ny1tt"]
 [ext_resource type="PackedScene" uid="uid://bvuf1t6c8gf6v" path="res://prefabs/path_billboard.tscn" id="8_lojh2"]
+[ext_resource type="Material" uid="uid://c40jewqy64cww" path="res://materials/path_billboard.tres" id="9_g3urr"]
 [ext_resource type="PackedScene" uid="uid://dvmk3jx5tq45s" path="res://prefabs/path_piece.tscn" id="9_npj4y"]
-[ext_resource type="Script" path="res://scripts/remote_viewport_pivot.gd" id="9_tnije"]
+[ext_resource type="Script" path="res://scripts/path_container.gd" id="9_tnije"]
 
 [sub_resource type="Curve" id="Curve_54ys1"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.153465, 1), 0.0, 0.0, 0, 0, Vector2(0.633663, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 4
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_okhw7"]
-viewport_path = NodePath("path_viewport_container/path_viewport")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x6uyl"]
-resource_local_to_scene = true
-transparency = 1
-shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_okhw7")
-
-[node name="remote" type="Node3D" node_paths=PackedStringArray("path_pivot")]
+[node name="remote" type="Node3D" node_paths=PackedStringArray("path_container", "sub_viewport", "mesh_instance")]
 script = ExtResource("1_8i1lf")
 glow_curve = SubResource("Curve_54ys1")
-path_pivot = NodePath("path_viewport_container/path_viewport/pivot")
+path_container = NodePath("path_viewport_container/path_viewport/path_container")
+sub_viewport = NodePath("path_viewport_container/path_viewport")
+mesh_instance = NodePath("path_container/path_billboard/path_billboard")
 
 [node name="artifact_base" parent="." instance=ExtResource("2_2nqvk")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
@@ -86,16 +80,6 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.59141, 0.154357)
 layers = 2
 texture = ExtResource("5_am0sf")
 
-[node name="path_container" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0514029)
-
-[node name="path_billboard" parent="path_container" instance=ExtResource("8_lojh2")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
-
-[node name="path_billboard" parent="path_container/path_billboard" index="0"]
-layers = 2
-surface_material_override/0 = SubResource("StandardMaterial3D_x6uyl")
-
 [node name="path_viewport_container" type="SubViewportContainer" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
@@ -111,7 +95,7 @@ canvas_cull_mask = 4294966280
 size = Vector2i(1280, 720)
 render_target_update_mode = 4
 
-[node name="pivot" type="Control" parent="path_viewport_container/path_viewport"]
+[node name="path_container" type="Control" parent="path_viewport_container/path_viewport"]
 light_mask = 8
 visibility_layer = 8
 layout_mode = 3
@@ -126,14 +110,14 @@ scale = Vector2(2, 2)
 script = ExtResource("9_tnije")
 path_piece_prefab = ExtResource("9_npj4y")
 
-[node name="path_piece" parent="path_viewport_container/path_viewport/pivot" instance=ExtResource("9_npj4y")]
-layout_mode = 0
-offset_top = 26.0
-offset_bottom = 66.0
+[node name="path_container" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0514029)
 
-[node name="path_piece2" parent="path_viewport_container/path_viewport/pivot" instance=ExtResource("9_npj4y")]
-layout_mode = 0
-offset_top = 78.0
-offset_bottom = 118.0
+[node name="path_billboard" parent="path_container" instance=ExtResource("8_lojh2")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+
+[node name="path_billboard" parent="path_container/path_billboard" index="0"]
+layers = 2
+surface_material_override/0 = ExtResource("9_g3urr")
 
 [editable path="path_container/path_billboard"]

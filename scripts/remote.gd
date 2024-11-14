@@ -13,8 +13,12 @@ var accept_recieved = false
 @export var glow_curve: Curve
 var glow_start_time = 0.0
 
-@export var path_pivot: Control
+@export var path_container: Control
+@export var sub_viewport :SubViewport
+@export var mesh_instance: MeshInstance3D
 
+# func _ready() -> void:
+# 	RenderingServer.connect('frame_post_draw', _on_frame_post_draw)
 
 func _process(_delta: float) -> void:
 	var time_elapsed = main.curr_secs() - glow_start_time
@@ -32,6 +36,7 @@ func activate():
 	active = true
 	accept_recieved = false
 	detector.detector_set_rotation(indicator.target_rotation)
+	path_container.reset()
 
 	var target_puzzle = ''
 	var closest_distance = 10000.0
@@ -63,6 +68,7 @@ func input_accept():
 	accept_recieved = true
 	indicator.spin()
 	detector.accept()
+	path_container.accept()
 
 func input_left():
 	if not active:
@@ -70,6 +76,7 @@ func input_left():
 
 	indicator.target_rotation -= 90
 	detector.detector_set_rotation(indicator.target_rotation)
+	path_container.path_set_rotation(indicator.target_rotation)
 
 func input_right():
 	if not active:
@@ -77,3 +84,15 @@ func input_right():
 
 	indicator.target_rotation += 90
 	detector.detector_set_rotation(indicator.target_rotation)
+	path_container.path_set_rotation(indicator.target_rotation)
+
+# func _on_frame_post_draw():
+# 	var viewport_texture:ViewportTexture = sub_viewport.get_texture();
+
+# 	var mat = StandardMaterial3D.new()
+# 	mat.albedo_texture = viewport_texture
+# 	mat.transparency = viewport_texture
+
+# 	mesh_instance.set_surface_override_material(0, mat);
+
+# 	RenderingServer.disconnect('frame_post_draw', _on_frame_post_draw)
