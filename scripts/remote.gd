@@ -13,6 +13,8 @@ var accept_recieved = false
 @export var glow_curve: Curve
 var glow_start_time = 0.0
 
+@export var path_pivot: Control
+
 
 func _process(_delta: float) -> void:
 	var time_elapsed = main.curr_secs() - glow_start_time
