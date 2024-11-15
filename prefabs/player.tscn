@@ -46,13 +46,13 @@ cull_mask = 1047554
 fov = 40.0
 
 [node name="not_active_point" type="Node3D" parent="head/camera/sub_viewport_container/sub_viewport/camera"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.10501, -0.793442, -2.75)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.46606, -1.08508, -3.54842)
 
 [node name="active_point" type="Node3D" parent="head/camera/sub_viewport_container/sub_viewport/camera"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.75)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.54842)
 
 [node name="active_point_deactivating" type="Node3D" parent="head/camera/sub_viewport_container/sub_viewport/camera"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.48597)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.28439)
 
 [node name="remote" parent="head/camera/sub_viewport_container/sub_viewport/camera" instance=ExtResource("2_8h0rr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.31013, -0.377568, -2.42658)

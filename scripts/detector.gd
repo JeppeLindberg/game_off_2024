@@ -4,6 +4,9 @@ var _upright: Basis
 var _puzzle_camera_offset: Vector3
 var valid := true;
 var target_puzzle_node;
+var _rotation = 0.0
+var _rotation_offset = 0.0
+var _first_accept = true
 
 @onready var puzzle_camera = get_node('/root/main/puzzle_viewport_container/puzzle_viewport/camera')
 @onready var puzzles = get_node('/root/main/world/puzzles')
@@ -19,12 +22,20 @@ func set_puzzle(new_target_puzzle):
 	target_puzzle_node = get_node('../' + new_target_puzzle)
 	global_position = target_puzzle_node.global_position
 	puzzle_camera.global_position = global_position + _puzzle_camera_offset
+	_rotation = 0.0
+	_rotation_offset = 0.0
+	_first_accept = true
 
 	valid = true;
 	for child in target_puzzle_node.get_children():
 		child.reset();
 
 func accept():
+	if _first_accept:
+		_rotation_offset = -_rotation;
+		_first_accept = false
+	transform.basis = _upright.rotated(Vector3.DOWN, deg_to_rad(_rotation + _rotation_offset))
+
 	position += -transform.basis.z
 	var node = get_beam_node(global_position + Vector3.UP, global_position + Vector3.DOWN)
 
@@ -54,7 +65,8 @@ func _is_valid():
 	return(true)
 
 func detector_set_rotation(new_rotation):		
-	transform.basis = _upright.rotated(Vector3.DOWN, deg_to_rad(new_rotation))
+	_rotation = new_rotation
+	transform.basis = _upright.rotated(Vector3.DOWN, deg_to_rad(_rotation + _rotation_offset))
 
 func get_beam_node(position_from, position_to):
 	var ray_from = position_from
