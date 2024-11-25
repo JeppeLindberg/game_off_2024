@@ -15,7 +15,6 @@ var _delta_secs:float
 func _ready():
 	if debug_mode:
 		player.holding_remote = true
-		puzzle_viewport_container.visible = true
 	else:
 		player.position = player_spawn.position
 		puzzle_viewport_container.visible = false

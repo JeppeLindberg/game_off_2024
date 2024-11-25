@@ -5,6 +5,6 @@
 
 [node name="straight" instance=ExtResource("1_s5n3v")]
 
-[node name="straight" parent="." index="0"]
+[node name="puzzle_straight" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 surface_material_override/0 = ExtResource("2_6sh0d")
