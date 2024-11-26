@@ -11,7 +11,6 @@
 [ext_resource type="Script" path="res://scripts/activate_collision_shape.gd" id="6_5sqek"]
 [ext_resource type="PackedScene" uid="uid://c0qcenihhia02" path="res://prefabs/static/platform_brick.tscn" id="6_r32jv"]
 [ext_resource type="PackedScene" uid="uid://bsnxf6nmsw2k5" path="res://prefabs/puzzle_tiles/straight.tscn" id="6_ulbid"]
-[ext_resource type="PackedScene" uid="uid://chfmrxyg1kktm" path="res://prefabs/static/platform_brick_broken.tscn" id="7_3rrfu"]
 [ext_resource type="PackedScene" uid="uid://drupxdrx5fjlj" path="res://prefabs/door.tscn" id="8_ieiih"]
 [ext_resource type="PackedScene" uid="uid://v7yeeeprs686" path="res://prefabs/static/doorframe_2.tscn" id="8_rguxw"]
 [ext_resource type="PackedScene" uid="uid://c4b836x5g55rf" path="res://prefabs/puzzle_tiles/bend.tscn" id="9_iewm5"]
@@ -36,6 +35,7 @@
 [ext_resource type="Shader" path="res://materials/shaders/mirror.gdshader" id="27_b1lug"]
 [ext_resource type="Script" path="res://scripts/mirror.gd" id="27_k78k4"]
 [ext_resource type="PackedScene" uid="uid://lkuy6fmgkifj" path="res://prefabs/static/pylon.tscn" id="28_cqddk"]
+[ext_resource type="PackedScene" uid="uid://cct17e38qcel7" path="res://prefabs/static/pylon_2.tscn" id="29_fqnb7"]
 [ext_resource type="Script" path="res://scripts/viewport.gd" id="30_je4u8"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1mcd2"]
@@ -75,7 +75,7 @@ debug_mode = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [node name="player" parent="world" instance=ExtResource("2_elriq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.9054, 6.6702, -94.4635)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.7118, 8.43966, -87.7769)
 
 [node name="environment" type="WorldEnvironment" parent="world"]
 environment = ExtResource("3_33g8e")
@@ -237,51 +237,6 @@ transform = Transform3D(1, -1.42109e-14, -4.37114e-08, 1.03895e-14, 1, -4.37114e
 [node name="start2" parent="world/puzzles/B_1" instance=ExtResource("5_m1fgw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 
-[node name="C_1" type="Node3D" parent="world/puzzles"]
-transform = Transform3D(0.263604, -6.15101e-08, -0.964631, 4.37114e-08, -1, 7.57104e-08, -0.964631, -6.21229e-08, -0.263604, 24.1854, 9.92264, -80.8009)
-
-[node name="puzzle_closeness" parent="world/puzzles/C_1" instance=ExtResource("4_w55mr")]
-transform = Transform3D(1, 0, 4.23516e-22, 0, 1, 0, 4.23516e-22, 0, 1, 1.01838, 2.97608, 4.69075)
-
-[node name="end2" parent="world/puzzles/C_1" instance=ExtResource("5_hcvri")]
-transform = Transform3D(-1, -8.74228e-08, 1.74948e-14, 8.74228e-08, -1, -8.74228e-08, 2.51376e-14, -8.74228e-08, 1, -1, -2.42387e-07, 2.06632e-07)
-
-[node name="straight2" parent="world/puzzles/C_1" instance=ExtResource("6_ulbid")]
-transform = Transform3D(-4.37114e-08, -1, 1.06581e-14, 1, -4.37114e-08, -1.06581e-14, 1.06581e-14, 1.06581e-14, 1, 1, 2, 5.96046e-08)
-
-[node name="straight3" parent="world/puzzles/C_1" instance=ExtResource("6_ulbid")]
-transform = Transform3D(1, -1.06581e-14, 4.37114e-08, 1.25688e-14, 1, -4.37114e-08, -4.37114e-08, 4.37114e-08, 1, 0, 0, 5.96046e-08)
-
-[node name="straight4" parent="world/puzzles/C_1" instance=ExtResource("6_ulbid")]
-transform = Transform3D(1, -7.10543e-15, 4.37114e-08, 1.42109e-14, 1, -4.37114e-08, -4.37114e-08, 4.37114e-08, 1, 2, 7.10545e-14, -1.58952e-07)
-
-[node name="puzzle_bend" parent="world/puzzles/C_1" instance=ExtResource("9_iewm5")]
-transform = Transform3D(-4.37114e-08, -1, -8.47033e-22, 1, -4.37114e-08, 0, -2.07522e-21, -8.47033e-22, 1, -4.37114e-08, 2, 5.96046e-08)
-
-[node name="puzzle_bend2" parent="world/puzzles/C_1" instance=ExtResource("9_iewm5")]
-transform = Transform3D(1, -1.42109e-14, -4.37114e-08, 1.03895e-14, 1, -4.37114e-08, 4.37114e-08, 4.37114e-08, 1, 2, 1, 3.5366e-07)
-
-[node name="start2" parent="world/puzzles/C_1" instance=ExtResource("5_m1fgw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -1, 0)
-
-[node name="C_2" type="Node3D" parent="world/puzzles"]
-transform = Transform3D(-0.263604, 0.964631, 6.30389e-08, -5.96046e-08, -8.75443e-08, 1, 0.964631, 0.263604, 6.70552e-08, 32.9223, 4.89624, -80.4867)
-
-[node name="puzzle_closeness" parent="world/puzzles/C_2" instance=ExtResource("4_w55mr")]
-transform = Transform3D(1, 0, 4.23516e-22, 0, 1, 0, 4.23516e-22, 0, 1, 2.08774, 5.16163, -0.809213)
-
-[node name="end2" parent="world/puzzles/C_2" instance=ExtResource("5_hcvri")]
-transform = Transform3D(1, 8.74228e-08, 8.74228e-08, -8.74228e-08, 4.37114e-08, 1, 8.74227e-08, -1, 4.37114e-08, 2, 2, -2)
-
-[node name="straight4" parent="world/puzzles/C_2" instance=ExtResource("6_ulbid")]
-transform = Transform3D(1, -7.10543e-15, 4.37114e-08, 1.42109e-14, 1, -4.37114e-08, -4.37114e-08, 4.37114e-08, 1, 2, 7.10545e-14, -1.58952e-07)
-
-[node name="straight5" parent="world/puzzles/C_2" instance=ExtResource("6_ulbid")]
-transform = Transform3D(1, -4.37114e-08, 7.10543e-15, 0, 7.10543e-15, 1, -4.37114e-08, -1, 1.06581e-14, 2, 2, -1)
-
-[node name="start2" parent="world/puzzles/C_2" instance=ExtResource("5_m1fgw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -1, 0)
-
 [node name="B_2" type="Node3D" parent="world/puzzles"]
 transform = Transform3D(0.703593, 1.2302e-07, -0.710603, -1.74846e-07, 1, 0, 0.710603, 1.24246e-07, 0.703593, 20.7117, 5.30057, -130.113)
 
@@ -402,6 +357,219 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2, 0)
 [node name="puzzle_mirror5" parent="world/puzzles/B_4" instance=ExtResource("12_cyu00")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 3, 0)
 
+[node name="C_1" type="Node3D" parent="world/puzzles"]
+transform = Transform3D(0.263604, -6.15101e-08, -0.964631, 4.37114e-08, -1, 7.57104e-08, -0.964631, -6.21229e-08, -0.263604, 24.1854, 9.92264, -80.8009)
+
+[node name="puzzle_closeness" parent="world/puzzles/C_1" instance=ExtResource("4_w55mr")]
+transform = Transform3D(1, 0, 4.23516e-22, 0, 1, 0, 4.23516e-22, 0, 1, 1.01838, 2.97608, 4.69075)
+
+[node name="end2" parent="world/puzzles/C_1" instance=ExtResource("5_hcvri")]
+transform = Transform3D(-1, -8.74228e-08, 1.74948e-14, 8.74228e-08, -1, -8.74228e-08, 2.51376e-14, -8.74228e-08, 1, -1, -2.42387e-07, 2.06632e-07)
+
+[node name="straight2" parent="world/puzzles/C_1" instance=ExtResource("6_ulbid")]
+transform = Transform3D(-4.37114e-08, -1, 1.06581e-14, 1, -4.37114e-08, -1.06581e-14, 1.06581e-14, 1.06581e-14, 1, 1, 2, 5.96046e-08)
+
+[node name="straight3" parent="world/puzzles/C_1" instance=ExtResource("6_ulbid")]
+transform = Transform3D(1, -1.06581e-14, 4.37114e-08, 1.25688e-14, 1, -4.37114e-08, -4.37114e-08, 4.37114e-08, 1, 0, 0, 5.96046e-08)
+
+[node name="straight4" parent="world/puzzles/C_1" instance=ExtResource("6_ulbid")]
+transform = Transform3D(1, -7.10543e-15, 4.37114e-08, 1.42109e-14, 1, -4.37114e-08, -4.37114e-08, 4.37114e-08, 1, 2, 7.10545e-14, -1.58952e-07)
+
+[node name="puzzle_bend" parent="world/puzzles/C_1" instance=ExtResource("9_iewm5")]
+transform = Transform3D(-4.37114e-08, -1, -8.47033e-22, 1, -4.37114e-08, 0, -2.07522e-21, -8.47033e-22, 1, -4.37114e-08, 2, 5.96046e-08)
+
+[node name="puzzle_bend2" parent="world/puzzles/C_1" instance=ExtResource("9_iewm5")]
+transform = Transform3D(1, -1.42109e-14, -4.37114e-08, 1.03895e-14, 1, -4.37114e-08, 4.37114e-08, 4.37114e-08, 1, 2, 1, 3.5366e-07)
+
+[node name="start2" parent="world/puzzles/C_1" instance=ExtResource("5_m1fgw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -1, 0)
+
+[node name="C_2" type="Node3D" parent="world/puzzles"]
+transform = Transform3D(-0.263604, 0.964631, 6.30389e-08, -5.96046e-08, -8.75443e-08, 1, 0.964631, 0.263604, 6.70552e-08, 32.9223, 4.89624, -80.4867)
+
+[node name="puzzle_closeness" parent="world/puzzles/C_2" instance=ExtResource("4_w55mr")]
+transform = Transform3D(1, 0, 4.23516e-22, 0, 1, 0, 4.23516e-22, 0, 1, 2.08774, 5.16163, -0.809213)
+
+[node name="end2" parent="world/puzzles/C_2" instance=ExtResource("5_hcvri")]
+transform = Transform3D(1, 8.74228e-08, 8.74228e-08, -8.74228e-08, 4.37114e-08, 1, 8.74227e-08, -1, 4.37114e-08, 2, 2, -2)
+
+[node name="straight4" parent="world/puzzles/C_2" instance=ExtResource("6_ulbid")]
+transform = Transform3D(1, -7.10543e-15, 4.37114e-08, 1.42109e-14, 1, -4.37114e-08, -4.37114e-08, 4.37114e-08, 1, 2, 7.10545e-14, -1.58952e-07)
+
+[node name="straight5" parent="world/puzzles/C_2" instance=ExtResource("6_ulbid")]
+transform = Transform3D(1, -4.37114e-08, 7.10543e-15, 0, 7.10543e-15, 1, -4.37114e-08, -1, 1.06581e-14, 2, 2, -1)
+
+[node name="start2" parent="world/puzzles/C_2" instance=ExtResource("5_m1fgw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -1, 0)
+
+[node name="C_3" type="Node3D" parent="world/puzzles"]
+transform = Transform3D(-4.47035e-08, -0.263604, -0.964631, -1, -7.78211e-08, 6.76756e-08, -1.04308e-07, 0.964631, -0.263604, 60.0465, 2.69901, -66.0529)
+
+[node name="puzzle_closeness" parent="world/puzzles/C_3" instance=ExtResource("4_w55mr")]
+transform = Transform3D(1, 0, 4.23516e-22, 0, 1, 0, 4.23516e-22, 0, 1, 2.08774, -0.937542, -1.57311)
+
+[node name="end2" parent="world/puzzles/C_3" instance=ExtResource("5_hcvri")]
+transform = Transform3D(1, -8.74228e-08, 8.74228e-08, -8.74228e-08, -1, 1.42109e-14, 8.74227e-08, -2.13163e-14, -1, 2, -3.57628e-07, -5)
+
+[node name="straight4" parent="world/puzzles/C_3" instance=ExtResource("6_ulbid")]
+transform = Transform3D(1, -7.10543e-15, 4.37114e-08, 1.42109e-14, 1, -4.37114e-08, -4.37114e-08, 4.37114e-08, 1, 2, 7.10545e-14, -1.58952e-07)
+
+[node name="straight5" parent="world/puzzles/C_3" instance=ExtResource("6_ulbid")]
+transform = Transform3D(1, -4.37114e-08, 7.10543e-15, 0, 7.10543e-15, 1, -4.37114e-08, -1, 1.06581e-14, 2, 2, -1)
+
+[node name="straight6" parent="world/puzzles/C_3" instance=ExtResource("6_ulbid")]
+transform = Transform3D(1, -4.37114e-08, 7.10543e-15, 0, 7.10543e-15, 1, -4.37114e-08, -1, 1.06581e-14, 2, 2, -2)
+
+[node name="straight7" parent="world/puzzles/C_3" instance=ExtResource("6_ulbid")]
+transform = Transform3D(1, -4.37114e-08, 7.10543e-15, 0, 7.10543e-15, 1, -4.37114e-08, -1, 1.06581e-14, 2, 2, -3)
+
+[node name="straight8" parent="world/puzzles/C_3" instance=ExtResource("6_ulbid")]
+transform = Transform3D(1, -7.10543e-15, -4.37114e-08, 0, -1, -4.37114e-08, -4.37114e-08, 4.37114e-08, -1, 2, 1, -5)
+
+[node name="start2" parent="world/puzzles/C_3" instance=ExtResource("5_m1fgw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -1, 0)
+
+[node name="C_4" type="Node3D" parent="world/puzzles"]
+transform = Transform3D(-0.263604, 0.964631, -2.42144e-08, -2.98023e-08, -5.96046e-08, 1, 0.964631, 0.263604, 8.9407e-08, 60.8062, 4.87285, -90.4011)
+
+[node name="puzzle_closeness" parent="world/puzzles/C_4" instance=ExtResource("4_w55mr")]
+transform = Transform3D(1, 0, 4.23516e-22, 0, 1, 0, 4.23516e-22, 0, 1, 9.12388, -1.63947, -1.57311)
+
+[node name="puzzle_bend" parent="world/puzzles/C_4" instance=ExtResource("9_iewm5")]
+transform = Transform3D(4.37113e-08, -1, 8.9407e-08, 7.35137e-08, 8.9407e-08, 1, -1, -4.37113e-08, 4.37114e-08, 2, 2, -3)
+
+[node name="puzzle_bend2" parent="world/puzzles/C_4" instance=ExtResource("9_iewm5")]
+transform = Transform3D(1, 8.74227e-08, 8.9407e-08, -5.96047e-08, 4.37114e-08, 1, 8.74227e-08, -1, 4.37114e-08, 7, 2, -2)
+
+[node name="end2" parent="world/puzzles/C_4" instance=ExtResource("5_hcvri")]
+transform = Transform3D(-1, -3.66018e-14, -8.74227e-08, 2.73471e-14, -1, -8.74228e-08, -8.74227e-08, -8.74228e-08, 1, 6, -9.53674e-07, 6.27833e-07)
+
+[node name="straight4" parent="world/puzzles/C_4" instance=ExtResource("6_ulbid")]
+transform = Transform3D(1, -7.10543e-15, 4.37114e-08, 1.42109e-14, 1, -4.37114e-08, -4.37114e-08, 4.37114e-08, 1, 2, 7.10545e-14, -1.58952e-07)
+
+[node name="straight6" parent="world/puzzles/C_4" instance=ExtResource("6_ulbid")]
+transform = Transform3D(1, -7.10543e-15, 4.37114e-08, 1.42109e-14, 1, -4.37114e-08, -4.37114e-08, 4.37114e-08, 1, 7, 1.42109e-13, -3.77509e-07)
+
+[node name="straight5" parent="world/puzzles/C_4" instance=ExtResource("6_ulbid")]
+transform = Transform3D(1, -4.37114e-08, 7.10543e-15, 0, 7.10543e-15, 1, -4.37114e-08, -1, 1.06581e-14, 2, 2, -1)
+
+[node name="straight7" parent="world/puzzles/C_4" instance=ExtResource("6_ulbid")]
+transform = Transform3D(1.06581e-14, 1, 7.10543e-15, -3.55271e-15, -1.06581e-14, 1, 1, -1.77636e-14, 1.06581e-14, 2, 2, -2)
+
+[node name="straight8" parent="world/puzzles/C_4" instance=ExtResource("6_ulbid")]
+transform = Transform3D(1.06581e-14, 1, 7.10543e-15, -3.55271e-15, -1.06581e-14, 1, 1, -1.77636e-14, 1.06581e-14, 3, 2, -2)
+
+[node name="straight9" parent="world/puzzles/C_4" instance=ExtResource("6_ulbid")]
+transform = Transform3D(1.06581e-14, 1, 7.10543e-15, -3.55271e-15, -1.06581e-14, 1, 1, -1.77636e-14, 1.06581e-14, 4, 2, -2)
+
+[node name="straight10" parent="world/puzzles/C_4" instance=ExtResource("6_ulbid")]
+transform = Transform3D(1.06581e-14, 1, 7.10543e-15, -3.55271e-15, -1.06581e-14, 1, 1, -1.77636e-14, 1.06581e-14, 5, 2, -2)
+
+[node name="straight11" parent="world/puzzles/C_4" instance=ExtResource("6_ulbid")]
+transform = Transform3D(-1, -4.37114e-08, 7.10543e-15, 1.42109e-14, -1.42109e-14, 1, -4.37114e-08, 1, 1.06581e-14, 6, 2, -2)
+
+[node name="start2" parent="world/puzzles/C_4" instance=ExtResource("5_m1fgw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -1, 0)
+
+[node name="D_1" type="Node3D" parent="world/puzzles"]
+transform = Transform3D(-4.47035e-08, -0.263604, -0.964631, -1, -7.78211e-08, 6.76756e-08, -1.04308e-07, 0.964631, -0.263604, 41.019, 15.9619, -99.2128)
+
+[node name="puzzle_closeness" parent="world/puzzles/D_1" instance=ExtResource("4_w55mr")]
+transform = Transform3D(1, 0, 4.23516e-22, 0, 1, 0, 4.23516e-22, 0, 1, 6.89331, 8.98878, 2.81696)
+
+[node name="end2" parent="world/puzzles/D_1" instance=ExtResource("5_hcvri")]
+transform = Transform3D(1, 8.74228e-08, -8.74227e-08, -8.74228e-08, 1, 8.74228e-08, 8.74227e-08, -8.74228e-08, 1, -2, -1, 2.14569e-07)
+
+[node name="straight4" parent="world/puzzles/D_1" instance=ExtResource("6_ulbid")]
+transform = Transform3D(1, -7.10543e-15, 4.37114e-08, 1.42109e-14, 1, -4.37114e-08, -4.37114e-08, 4.37114e-08, 1, 2, 7.10545e-14, -1.58952e-07)
+
+[node name="puzzle_bend3" parent="world/puzzles/D_1" instance=ExtResource("9_iewm5")]
+transform = Transform3D(-1, 8.74228e-08, 4.37114e-08, -8.74228e-08, -1, -5.96046e-08, 4.37114e-08, -5.96046e-08, 1, 1, -1.00001, 4.37114e-08)
+
+[node name="puzzle_bend4" parent="world/puzzles/D_1" instance=ExtResource("9_iewm5")]
+transform = Transform3D(1.31134e-07, 1, 4.37114e-08, -1, 1.31134e-07, -5.96046e-08, -5.96047e-08, -4.37114e-08, 1, 3, -2.00001, -1.03316e-07)
+
+[node name="puzzle_bend6" parent="world/puzzles/D_1" instance=ExtResource("9_iewm5")]
+transform = Transform3D(-1, 8.74228e-08, 4.37114e-08, -8.74228e-08, -1, -5.96046e-08, 4.37114e-08, -5.96047e-08, 1, -3, -1.00001, 2.18557e-07)
+
+[node name="puzzle_bend5" parent="world/puzzles/D_1" instance=ExtResource("9_iewm5")]
+transform = Transform3D(1.31134e-07, 1, 4.37114e-08, -1, 1.31134e-07, -5.96046e-08, -5.96047e-08, -4.37114e-08, 1, -1, -2.00001, 7.15295e-08)
+
+[node name="straight18" parent="world/puzzles/D_1" instance=ExtResource("6_ulbid")]
+transform = Transform3D(1, -7.10543e-15, 4.37114e-08, 1.42109e-14, 1, -4.37114e-08, -4.37114e-08, 4.37114e-08, 1, 2, -1, -2.02664e-07)
+
+[node name="puzzle_mirror" parent="world/puzzles/D_1" instance=ExtResource("12_cyu00")]
+transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 1, -4.37114e-08, -5.96046e-08, 5.96046e-08, 4.37114e-08, 1, 3, -2, -5.96046e-08)
+
+[node name="puzzle_mirror2" parent="world/puzzles/D_1" instance=ExtResource("12_cyu00")]
+transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 1, -4.37114e-08, -5.96046e-08, 5.96046e-08, 4.37114e-08, 1, 4, -2, -1.03316e-07)
+
+[node name="puzzle_mirror3" parent="world/puzzles/D_1" instance=ExtResource("12_cyu00")]
+transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 1, -4.37114e-08, -5.96046e-08, 5.96046e-08, 4.37114e-08, 1, 5, -2, -1.47027e-07)
+
+[node name="puzzle_mirror4" parent="world/puzzles/D_1" instance=ExtResource("12_cyu00")]
+transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 1, -4.37114e-08, -5.96046e-08, 5.96046e-08, 4.37114e-08, 1, -1, -2, 1.15241e-07)
+
+[node name="puzzle_mirror5" parent="world/puzzles/D_1" instance=ExtResource("12_cyu00")]
+transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 1, -4.37114e-08, -5.96046e-08, 5.96046e-08, 4.37114e-08, 1, -2, -2, 1.58952e-07)
+
+[node name="puzzle_mirror6" parent="world/puzzles/D_1" instance=ExtResource("12_cyu00")]
+transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 1, -4.37114e-08, -5.96046e-08, 5.96046e-08, 4.37114e-08, 1, -3, -2, 2.02664e-07)
+
+[node name="straight19" parent="world/puzzles/D_1" instance=ExtResource("6_ulbid")]
+transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 1, -4.37114e-08, -4.37114e-08, 4.37114e-08, 4.37114e-08, 1, 3, -1, -2.46375e-07)
+
+[node name="straight20" parent="world/puzzles/D_1" instance=ExtResource("6_ulbid")]
+transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 1, -4.37114e-08, -4.37114e-08, 4.37114e-08, 4.37114e-08, 1, -1, -1, -7.15296e-08)
+
+[node name="straight16" parent="world/puzzles/D_1" instance=ExtResource("6_ulbid")]
+transform = Transform3D(1, -7.10543e-15, 4.37114e-08, 1.42109e-14, 1, -4.37114e-08, -4.37114e-08, 4.37114e-08, 1, 0, 4.26327e-14, -7.15296e-08)
+
+[node name="straight17" parent="world/puzzles/D_1" instance=ExtResource("6_ulbid")]
+transform = Transform3D(1, -7.10543e-15, 4.37114e-08, 1.42109e-14, 1, -4.37114e-08, -4.37114e-08, 4.37114e-08, 1, 7.10543e-15, -1, -1.15241e-07)
+
+[node name="straight5" parent="world/puzzles/D_1" instance=ExtResource("6_ulbid")]
+transform = Transform3D(1, -4.37114e-08, 7.10543e-15, 0, 7.10543e-15, 1, -4.37114e-08, -1, 1.06581e-14, 2, 2, -1)
+
+[node name="straight6" parent="world/puzzles/D_1" instance=ExtResource("6_ulbid")]
+transform = Transform3D(1, -4.37114e-08, 7.10543e-15, 0, 7.10543e-15, 1, -4.37114e-08, -1, 1.06581e-14, 2, 2, -2)
+
+[node name="straight7" parent="world/puzzles/D_1" instance=ExtResource("6_ulbid")]
+transform = Transform3D(1, -4.37114e-08, 7.10543e-15, 0, 7.10543e-15, 1, -4.37114e-08, -1, 1.06581e-14, 2, 2, -3)
+
+[node name="straight13" parent="world/puzzles/D_1" instance=ExtResource("6_ulbid")]
+transform = Transform3D(1, -4.37114e-08, 7.10543e-15, 0, 7.10543e-15, 1, -4.37114e-08, -1, 1.06581e-14, 0, 2, -3)
+
+[node name="straight14" parent="world/puzzles/D_1" instance=ExtResource("6_ulbid")]
+transform = Transform3D(1, -4.37114e-08, 7.10543e-15, 0, 7.10543e-15, 1, -4.37114e-08, -1, 1.06581e-14, 4.37114e-08, 2, -2)
+
+[node name="straight15" parent="world/puzzles/D_1" instance=ExtResource("6_ulbid")]
+transform = Transform3D(1, -4.37114e-08, 7.10543e-15, 0, 7.10543e-15, 1, -4.37114e-08, -1, 1.06581e-14, 8.74228e-08, 2, -1)
+
+[node name="puzzle_bend" parent="world/puzzles/D_1" instance=ExtResource("9_iewm5")]
+transform = Transform3D(1, 0, -4.37114e-08, 7.10543e-15, -1, 0, -4.37114e-08, 0, -1, 2, -1.00001, -5)
+
+[node name="puzzle_bend2" parent="world/puzzles/D_1" instance=ExtResource("9_iewm5")]
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, -1, 4.37114e-08, 0, -3.55271e-15, 4.37114e-08, -1, -9.53674e-07, -2.00001, -5)
+
+[node name="straight8" parent="world/puzzles/D_1" instance=ExtResource("6_ulbid")]
+transform = Transform3D(1, -7.10543e-15, -4.37114e-08, 0, -1, -4.37114e-08, -4.37114e-08, 4.37114e-08, -1, 2, 1, -5)
+
+[node name="straight11" parent="world/puzzles/D_1" instance=ExtResource("6_ulbid")]
+transform = Transform3D(1, -7.10543e-15, -4.37114e-08, 0, -1, -4.37114e-08, -4.37114e-08, 4.37114e-08, -1, 0, -5.96046e-08, -5)
+
+[node name="straight12" parent="world/puzzles/D_1" instance=ExtResource("6_ulbid")]
+transform = Transform3D(1, -7.10543e-15, -4.37114e-08, 0, -1, -4.37114e-08, -4.37114e-08, 4.37114e-08, -1, 7.10543e-15, 1, -5)
+
+[node name="straight10" parent="world/puzzles/D_1" instance=ExtResource("6_ulbid")]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 1, 4.37114e-08, -4.37114e-08, -4.37114e-08, -4.37114e-08, -1, 1.19209e-07, -1, -5)
+
+[node name="straight9" parent="world/puzzles/D_1" instance=ExtResource("6_ulbid")]
+transform = Transform3D(1, -7.10543e-15, -4.37114e-08, 0, -1, -4.37114e-08, -4.37114e-08, 4.37114e-08, -1, 2, -5.96046e-08, -5)
+
+[node name="start2" parent="world/puzzles/D_1" instance=ExtResource("5_m1fgw")]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 3, 1.19209e-07, 0)
+
 [node name="doorframe_2" parent="world" instance=ExtResource("8_rguxw")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.54277, 0, -8.18983)
 
@@ -460,6 +628,30 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45339, 0, 0)
 transform = Transform3D(0.282358, 0, 0.959309, 0, 1, 0, -0.959309, 0, 0.282358, 48.545, -0.0829878, -74.1668)
 
 [node name="door_C_2" parent="world/doorframe_11" instance=ExtResource("8_ieiih")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45339, 0, 0)
+
+[node name="doorframe_12" parent="world" instance=ExtResource("8_rguxw")]
+transform = Transform3D(-0.959309, 0, 0.282358, 0, 1, 0, -0.282358, 0, -0.959309, 68.8606, -0.0829878, -72.3568)
+
+[node name="door_C_3" parent="world/doorframe_12" instance=ExtResource("8_ieiih")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45339, 0, 0)
+
+[node name="doorframe_13" parent="world" instance=ExtResource("8_rguxw")]
+transform = Transform3D(0.282358, 0, 0.959309, 0, 1, 0, -0.959309, 0, 0.282358, 50.8039, 3.91701, -81.8412)
+
+[node name="door_C_4" parent="world/doorframe_13" instance=ExtResource("8_ieiih")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45339, 0, 0)
+
+[node name="doorframe_14" parent="world" instance=ExtResource("8_rguxw")]
+transform = Transform3D(0.282358, 0, 0.959309, 0, 1, 0, -0.959309, 0, 0.282358, 27.7805, 3.91701, -88.6178)
+
+[node name="door_C_4" parent="world/doorframe_14" instance=ExtResource("8_ieiih")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45339, 0, 0)
+
+[node name="doorframe_15" parent="world" instance=ExtResource("8_rguxw")]
+transform = Transform3D(0.282358, 0, 0.959309, 0, 1, 0, -0.959309, 0, 0.282358, 45.3918, 7.81103, -109.495)
+
+[node name="door_D_1" parent="world/doorframe_15" instance=ExtResource("8_ieiih")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45339, 0, 0)
 
 [node name="static" type="Node3D" parent="world"]
@@ -587,6 +779,15 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.4572
 [node name="platform_brick8" parent="world/static/start_area" instance=ExtResource("6_r32jv")]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -7.54277, 9, -8.18983)
 
+[node name="platform_brick34" parent="world/static/start_area" instance=ExtResource("6_r32jv")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -7.54277, 9, -16.1898)
+
+[node name="platform_brick35" parent="world/static/start_area" instance=ExtResource("6_r32jv")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -7.54277, 9, -24.1898)
+
+[node name="platform_brick36" parent="world/static/start_area" instance=ExtResource("6_r32jv")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 0.457228, 9, -24.1898)
+
 [node name="platform_brick14" parent="world/static/start_area" instance=ExtResource("6_r32jv")]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -7.54277, 9, -32.1898)
 
@@ -607,18 +808,6 @@ transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -7.54277
 
 [node name="platform_brick25" parent="world/static/start_area" instance=ExtResource("6_r32jv")]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 0.45723, 9, -48.1898)
-
-[node name="platform_brick_broken3" parent="world/static/start_area" instance=ExtResource("7_3rrfu")]
-transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -7.54277, 9, -16.1898)
-
-[node name="platform_brick_broken6" parent="world/static/start_area" instance=ExtResource("7_3rrfu")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -7.54277, 9, -16.1898)
-
-[node name="platform_brick_broken4" parent="world/static/start_area" instance=ExtResource("7_3rrfu")]
-transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -7.54277, 9, -24.1898)
-
-[node name="platform_brick_broken5" parent="world/static/start_area" instance=ExtResource("7_3rrfu")]
-transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -8.4368, 9, -18.8118)
 
 [node name="wall_brick_12" parent="world/static/start_area" instance=ExtResource("9_sxwo2")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.54277, 0, -0.189834)
@@ -653,8 +842,14 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4.4572
 [node name="wall_brick_44" parent="world/static/start_area" instance=ExtResource("10_0q4hs")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4.45723, 0, -32.1898)
 
+[node name="wall_brick_73" parent="world/static/start_area" instance=ExtResource("10_0q4hs")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4.45723, 0, -24.1898)
+
 [node name="wall_brick_45" parent="world/static/start_area" instance=ExtResource("9_sxwo2")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4.45723, 4, -32.1898)
+
+[node name="wall_brick_82" parent="world/static/start_area" instance=ExtResource("9_sxwo2")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4.45723, 4, -24.1898)
 
 [node name="wall_brick_46" parent="world/static/start_area" instance=ExtResource("10_0q4hs")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4.45723, 0, -40.1898)
@@ -905,20 +1100,53 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 0)
 [node name="platform_brick8" parent="world/static/castle_area" instance=ExtResource("6_r32jv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 4.04303, -9)
 
-[node name="platform_brick15" parent="world/static/castle_area" instance=ExtResource("6_r32jv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 4.04303, 9.23159)
-
 [node name="platform_brick3" parent="world/static/castle_area" instance=ExtResource("6_r32jv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.16, 3.91322, 0)
+
+[node name="platform_brick15" parent="world/static/castle_area" instance=ExtResource("6_r32jv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.16, 3.91322, 0)
+
+[node name="platform_brick19" parent="world/static/castle_area" instance=ExtResource("6_r32jv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.16, 3.91322, -8)
+
+[node name="platform_brick20" parent="world/static/castle_area" instance=ExtResource("6_r32jv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.16, 3.91322, -8)
+
+[node name="platform_brick21" parent="world/static/castle_area" instance=ExtResource("6_r32jv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.16, 3.91322, -8)
+
+[node name="platform_brick18" parent="world/static/castle_area" instance=ExtResource("6_r32jv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.16, 3.91322, 0)
+
+[node name="platform_brick22" parent="world/static/castle_area" instance=ExtResource("6_r32jv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.16, 3.91322, 0)
+
+[node name="platform_brick23" parent="world/static/castle_area" instance=ExtResource("6_r32jv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.16, 3.91322, -8)
+
+[node name="platform_brick24" parent="world/static/castle_area" instance=ExtResource("6_r32jv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.16, 3.91322, -16)
+
+[node name="platform_brick27" parent="world/static/castle_area" instance=ExtResource("6_r32jv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.16, 3.91322, -16)
+
+[node name="platform_brick28" parent="world/static/castle_area" instance=ExtResource("6_r32jv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.16, 3.91322, -8)
+
+[node name="platform_brick29" parent="world/static/castle_area" instance=ExtResource("6_r32jv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.16, 3.91322, 0)
+
+[node name="platform_brick25" parent="world/static/castle_area" instance=ExtResource("6_r32jv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.16, 3.91322, -16)
+
+[node name="platform_brick26" parent="world/static/castle_area" instance=ExtResource("6_r32jv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.16, 3.91322, -16)
 
 [node name="staircase_1" parent="world/static/castle_area" instance=ExtResource("16_uvj0e")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 13, 0, 5.68248e-07)
 
 [node name="wall_brick_12" parent="world/static/castle_area" instance=ExtResource("9_sxwo2")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 15, 0, -9)
-
-[node name="wall_brick_20" parent="world/static/castle_area" instance=ExtResource("9_sxwo2")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 15, 0, 9)
 
 [node name="wall_brick_14" parent="world/static/castle_area" instance=ExtResource("9_sxwo2")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 18.5134, -0.229277, 9.81705e-07)
@@ -928,6 +1156,24 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 0, -5)
 
 [node name="wall_brick_19" parent="world/static/castle_area" instance=ExtResource("9_sxwo2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 0, 5.04318)
+
+[node name="wall_brick_20" parent="world/static/castle_area" instance=ExtResource("9_sxwo2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 0, 5.04318)
+
+[node name="wall_brick_21" parent="world/static/castle_area/wall_brick_20" instance=ExtResource("9_sxwo2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.595186)
+
+[node name="wall_brick_21" parent="world/static/castle_area" instance=ExtResource("9_sxwo2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35, 0, 5.04318)
+
+[node name="wall_brick_21" parent="world/static/castle_area/wall_brick_21" instance=ExtResource("9_sxwo2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.595186)
+
+[node name="wall_brick_22" parent="world/static/castle_area" instance=ExtResource("9_sxwo2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43, 0, 5.04318)
+
+[node name="wall_brick_21" parent="world/static/castle_area/wall_brick_22" instance=ExtResource("9_sxwo2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.595186)
 
 [node name="wall_brick_15" parent="world/static/castle_area" instance=ExtResource("9_sxwo2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.0461, 0, -4.3897)
@@ -941,11 +1187,44 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.0461, 0, 4.71156)
 [node name="wall_brick_16" parent="world/static/castle_area" instance=ExtResource("9_sxwo2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.162, -0.0923562, -3.94493)
 
+[node name="wall_brick_23" parent="world/static/castle_area" instance=ExtResource("9_sxwo2")]
+transform = Transform3D(-4.56956e-08, 0, -1, 0, 1, 0, 1, 0, -4.56956e-08, 26, 3.86517, -7.99999)
+
 [node name="wall_brick_32" parent="world/static/castle_area" instance=ExtResource("10_0q4hs")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 22, 3.86517, -4)
 
+[node name="pylon4" parent="world/static/castle_area" instance=ExtResource("28_cqddk")]
+transform = Transform3D(-1, 0, 8.9407e-08, 0, 1, 0, -8.9407e-08, 0, -1, 43, 2.40174, -12)
+
+[node name="wall_brick_35" parent="world/static/castle_area" instance=ExtResource("10_0q4hs")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 30, 3.86517, -12)
+
+[node name="wall_brick_36" parent="world/static/castle_area" instance=ExtResource("10_0q4hs")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 38, 3.86517, -12)
+
 [node name="wall_brick_33" parent="world/static/castle_area" instance=ExtResource("10_0q4hs")]
 transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, 22, 3.86517, 4.04636)
+
+[node name="wall_brick_34" parent="world/static/castle_area" instance=ExtResource("10_0q4hs")]
+transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, 30, 3.86517, 4.04636)
+
+[node name="wall_brick_24" parent="world/static/castle_area" instance=ExtResource("9_sxwo2")]
+transform = Transform3D(1, 0, -2.08616e-07, 0, 1, 0, 2.08616e-07, 0, 1, 39, 3.86517, 4.04636)
+
+[node name="wall_brick_25" parent="world/static/castle_area" instance=ExtResource("9_sxwo2")]
+transform = Transform3D(1, 0, -2.08616e-07, 0, 1, 0, 2.08616e-07, 0, 1, 47, 3.86517, 4.04636)
+
+[node name="wall_brick_28" parent="world/static/castle_area" instance=ExtResource("9_sxwo2")]
+transform = Transform3D(1, 0, -2.08616e-07, 0, 1, 0, 2.08616e-07, 0, 1, 39, 7.86517, 4.04636)
+
+[node name="wall_brick_29" parent="world/static/castle_area" instance=ExtResource("9_sxwo2")]
+transform = Transform3D(1, 0, -2.08616e-07, 0, 1, 0, 2.08616e-07, 0, 1, 47, 7.86517, 4.04636)
+
+[node name="wall_brick_26" parent="world/static/castle_area" instance=ExtResource("9_sxwo2")]
+transform = Transform3D(1, 0, -2.08616e-07, 0, 1, 0, 2.08616e-07, 0, 1, 49.5178, 3.86517, -15.9536)
+
+[node name="wall_brick_27" parent="world/static/castle_area" instance=ExtResource("9_sxwo2")]
+transform = Transform3D(1, 0, -2.08616e-07, 0, 1, 0, 2.08616e-07, 0, 1, 49.5178, 7.86517, -15.9536)
 
 [node name="right_wing" type="Node3D" parent="world/static"]
 transform = Transform3D(0.282358, 0, 0.959309, 0, 1, 0, -0.959309, 0, 0.282358, 25.5216, 3.91701, -80.9434)
@@ -955,6 +1234,18 @@ transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, 0, 0, 0)
 
 [node name="wall_brick_61" parent="world/static/right_wing" instance=ExtResource("10_v65yq")]
 transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, 2.55794e-13, -4, 24)
+
+[node name="wall_brick_63" parent="world/static/right_wing" instance=ExtResource("10_v65yq")]
+transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, 8, 0, 24)
+
+[node name="wall_brick_77" parent="world/static/right_wing" instance=ExtResource("10_v65yq")]
+transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, 33, 3.91743, 11)
+
+[node name="wall_brick_67" parent="world/static/right_wing" instance=ExtResource("10_v65yq")]
+transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, 8, 0, 0)
+
+[node name="wall_brick_62" parent="world/static/right_wing" instance=ExtResource("10_v65yq")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4, -4, 44)
 
 [node name="wall_brick_12" parent="world/static/right_wing" instance=ExtResource("9_sxwo2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
@@ -974,6 +1265,39 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 24)
 [node name="wall_brick_38" parent="world/static/right_wing" instance=ExtResource("9_sxwo2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 24)
 
+[node name="wall_brick_64" parent="world/static/right_wing" instance=ExtResource("9_sxwo2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 4, 24)
+
+[node name="wall_brick_65" parent="world/static/right_wing" instance=ExtResource("9_sxwo2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 4, 24)
+
+[node name="pylon_2" parent="world/static/right_wing" instance=ExtResource("29_fqnb7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.4004, 3.91743, 12.3973)
+
+[node name="wall_brick_76" parent="world/static/right_wing" instance=ExtResource("9_sxwo2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 3.91743, 11)
+
+[node name="wall_brick_79" parent="world/static/right_wing" instance=ExtResource("9_sxwo2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 7.91743, 11)
+
+[node name="wall_brick_83" parent="world/static/right_wing" instance=ExtResource("10_0q4hs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41, 7.91743, 11)
+
+[node name="wall_brick_84" parent="world/static/right_wing" instance=ExtResource("10_0q4hs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33, 7.91743, 11)
+
+[node name="wall_brick_80" parent="world/static/right_wing" instance=ExtResource("9_sxwo2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 11.9174, 11)
+
+[node name="wall_brick_78" parent="world/static/right_wing" instance=ExtResource("9_sxwo2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41, 3.91743, 11)
+
+[node name="wall_brick_66" parent="world/static/right_wing" instance=ExtResource("9_sxwo2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 24)
+
+[node name="wall_brick_68" parent="world/static/right_wing" instance=ExtResource("9_sxwo2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, -0.451005, 0)
+
 [node name="wall_brick_39" parent="world/static/right_wing" instance=ExtResource("9_sxwo2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 4, 24)
 
@@ -983,17 +1307,71 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, -4, 8)
 [node name="wall_brick_21" parent="world/static/right_wing" instance=ExtResource("9_sxwo2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, -4, 24)
 
+[node name="wall_brick_46" parent="world/static/right_wing" instance=ExtResource("9_sxwo2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, -4, 32)
+
+[node name="wall_brick_50" parent="world/static/right_wing" instance=ExtResource("9_sxwo2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, -4, 48)
+
+[node name="wall_brick_51" parent="world/static/right_wing" instance=ExtResource("9_sxwo2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, 48)
+
+[node name="wall_brick_58" parent="world/static/right_wing" instance=ExtResource("9_sxwo2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -4, 48)
+
+[node name="wall_brick_59" parent="world/static/right_wing" instance=ExtResource("9_sxwo2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, -4, 48)
+
+[node name="wall_brick_54" parent="world/static/right_wing" instance=ExtResource("9_sxwo2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -4, 31.9135)
+
+[node name="wall_brick_56" parent="world/static/right_wing" instance=ExtResource("9_sxwo2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, -4, 31.9135)
+
+[node name="wall_brick_47" parent="world/static/right_wing" instance=ExtResource("9_sxwo2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 32)
+
+[node name="wall_brick_57" parent="world/static/right_wing" instance=ExtResource("9_sxwo2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 32)
+
 [node name="wall_brick_19" parent="world/static/right_wing" instance=ExtResource("9_sxwo2")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -12, -4, 12)
 
 [node name="wall_brick_20" parent="world/static/right_wing" instance=ExtResource("9_sxwo2")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -12, -4, 20)
 
+[node name="wall_brick_40" parent="world/static/right_wing" instance=ExtResource("9_sxwo2")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -12, -4, 36)
+
+[node name="wall_brick_43" parent="world/static/right_wing" instance=ExtResource("9_sxwo2")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -12, -4, 44)
+
 [node name="wall_brick_32" parent="world/static/right_wing" instance=ExtResource("10_0q4hs")]
 transform = Transform3D(-2.98023e-08, 0, -1, 0, 1, 0, 1, 0, -2.98023e-08, -12, 0, 12)
 
 [node name="wall_brick_34" parent="world/static/right_wing" instance=ExtResource("10_0q4hs")]
 transform = Transform3D(-2.98023e-08, 0, -1, 0, 1, 0, 1, 0, -2.98023e-08, -12, 0, 20)
+
+[node name="wall_brick_41" parent="world/static/right_wing" instance=ExtResource("10_0q4hs")]
+transform = Transform3D(-2.98023e-08, 0, -1, 0, 1, 0, 1, 0, -2.98023e-08, -12, 0, 36)
+
+[node name="wall_brick_53" parent="world/static/right_wing" instance=ExtResource("10_0q4hs")]
+transform = Transform3D(1.17225e-07, 0, 1, 0, 1, 0, -1, 0, 1.17225e-07, 4, 0, 36)
+
+[node name="wall_brick_73" parent="world/static/right_wing" instance=ExtResource("10_0q4hs")]
+transform = Transform3D(1.17225e-07, 0, 1, 0, 1, 0, -1, 0, 1.17225e-07, 20, 0, 36)
+
+[node name="wall_brick_74" parent="world/static/right_wing" instance=ExtResource("10_0q4hs")]
+transform = Transform3D(1.17225e-07, 0, 1, 0, 1, 0, -1, 0, 1.17225e-07, 20, 0, 28)
+
+[node name="wall_brick_75" parent="world/static/right_wing" instance=ExtResource("10_0q4hs")]
+transform = Transform3D(1.17225e-07, 0, 1, 0, 1, 0, -1, 0, 1.17225e-07, 20, 0, 44)
+
+[node name="wall_brick_55" parent="world/static/right_wing" instance=ExtResource("10_0q4hs")]
+transform = Transform3D(1.17225e-07, 0, 1, 0, 1, 0, -1, 0, 1.17225e-07, 4, 0, 44)
+
+[node name="wall_brick_42" parent="world/static/right_wing" instance=ExtResource("10_0q4hs")]
+transform = Transform3D(-2.98023e-08, 0, -1, 0, 1, 0, 1, 0, -2.98023e-08, -12, 0, 44)
 
 [node name="wall_brick_33" parent="world/static/right_wing" instance=ExtResource("10_0q4hs")]
 transform = Transform3D(-2.98023e-08, 0, -1, 0, 1, 0, 1, 0, -2.98023e-08, -12, 0, 4)
@@ -1016,8 +1394,35 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4, -4,
 [node name="wall_brick_29" parent="world/static/right_wing" instance=ExtResource("9_sxwo2")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4, -4, 20)
 
+[node name="wall_brick_44" parent="world/static/right_wing" instance=ExtResource("9_sxwo2")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4, -4, 28)
+
+[node name="wall_brick_49" parent="world/static/right_wing" instance=ExtResource("9_sxwo2")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4, -4, 36)
+
+[node name="wall_brick_71" parent="world/static/right_wing" instance=ExtResource("9_sxwo2")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 20, -4, 36)
+
+[node name="wall_brick_72" parent="world/static/right_wing" instance=ExtResource("9_sxwo2")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 20, -4, 44)
+
+[node name="wall_brick_45" parent="world/static/right_wing" instance=ExtResource("9_sxwo2")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4, -4, 28)
+
 [node name="wall_brick_30" parent="world/static/right_wing" instance=ExtResource("9_sxwo2")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4, 0, 20)
+
+[node name="wall_brick_69" parent="world/static/right_wing" instance=ExtResource("9_sxwo2")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 20, 0, 20)
+
+[node name="wall_brick_70" parent="world/static/right_wing" instance=ExtResource("9_sxwo2")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 20, 0, 12)
+
+[node name="wall_brick_48" parent="world/static/right_wing" instance=ExtResource("9_sxwo2")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4, 0, 28)
+
+[node name="wall_brick_52" parent="world/static/right_wing" instance=ExtResource("9_sxwo2")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4, 0, 28)
 
 [node name="wall_brick_31" parent="world/static/right_wing" instance=ExtResource("9_sxwo2")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4, 4, 20)
@@ -1046,6 +1451,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 4)
 [node name="platform_brick3" parent="world/static/right_wing" instance=ExtResource("6_r32jv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0.01, 4)
 
+[node name="platform_brick28" parent="world/static/right_wing" instance=ExtResource("6_r32jv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, -0.0418293, -4)
+
 [node name="platform_brick4" parent="world/static/right_wing" instance=ExtResource("6_r32jv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, -3.99, 12)
 
@@ -1055,14 +1463,80 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.99, 12)
 [node name="platform_brick6" parent="world/static/right_wing" instance=ExtResource("6_r32jv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.99, 20)
 
+[node name="platform_brick8" parent="world/static/right_wing" instance=ExtResource("6_r32jv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.99, 28)
+
+[node name="platform_brick13" parent="world/static/right_wing" instance=ExtResource("6_r32jv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.01, 28)
+
+[node name="platform_brick16" parent="world/static/right_wing" instance=ExtResource("6_r32jv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0.00999999, 28)
+
+[node name="platform_brick20" parent="world/static/right_wing" instance=ExtResource("6_r32jv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0.00999999, 20)
+
+[node name="platform_brick23" parent="world/static/right_wing" instance=ExtResource("6_r32jv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0.00999999, 20)
+
+[node name="platform_brick26" parent="world/static/right_wing" instance=ExtResource("6_r32jv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 3.70024, 14.2109)
+
+[node name="platform_brick27" parent="world/static/right_wing" instance=ExtResource("6_r32jv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 3.70024, 22.2109)
+
+[node name="platform_brick24" parent="world/static/right_wing" instance=ExtResource("6_r32jv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0.00999999, 12)
+
+[node name="platform_brick25" parent="world/static/right_wing" instance=ExtResource("6_r32jv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0.00999999, 4)
+
+[node name="platform_brick21" parent="world/static/right_wing" instance=ExtResource("6_r32jv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0.00999999, 12)
+
+[node name="platform_brick22" parent="world/static/right_wing" instance=ExtResource("6_r32jv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0.00999999, 4)
+
+[node name="platform_brick17" parent="world/static/right_wing" instance=ExtResource("6_r32jv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0.00999999, 28)
+
+[node name="platform_brick9" parent="world/static/right_wing" instance=ExtResource("6_r32jv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.99, 36)
+
+[node name="platform_brick10" parent="world/static/right_wing" instance=ExtResource("6_r32jv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.99, 44)
+
+[node name="platform_brick14" parent="world/static/right_wing" instance=ExtResource("6_r32jv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -3.99, 44)
+
+[node name="platform_brick18" parent="world/static/right_wing" instance=ExtResource("6_r32jv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, -3.99, 44)
+
+[node name="platform_brick19" parent="world/static/right_wing" instance=ExtResource("6_r32jv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, -3.99, 36)
+
+[node name="platform_brick15" parent="world/static/right_wing" instance=ExtResource("6_r32jv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -3.99, 36)
+
+[node name="platform_brick11" parent="world/static/right_wing" instance=ExtResource("6_r32jv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, -3.99, 44)
+
+[node name="platform_brick12" parent="world/static/right_wing" instance=ExtResource("6_r32jv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, -3.99, 36)
+
 [node name="platform_brick7" parent="world/static/right_wing" instance=ExtResource("6_r32jv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, -3.99, 20)
 
 [node name="staircase_1" parent="world/static/right_wing" instance=ExtResource("16_uvj0e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.20032, -3.89394, 13.4484)
 
+[node name="staircase_2" parent="world/static/right_wing" instance=ExtResource("16_uvj0e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.07036, -3.89394, 37.188)
+
 [node name="pylon2" parent="world/static/right_wing" instance=ExtResource("28_cqddk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 39)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -4.03508, 40)
+
+[node name="pylon3" parent="world/static/right_wing" instance=ExtResource("28_cqddk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, -0.0350795, 30.8396)
 
 [node name="left_wing" type="Node3D" parent="world/static"]
 transform = Transform3D(-0.708007, 0, 0.706205, 0, 1, 0, -0.706205, 0, -0.708007, 17.0809, 3.91701, -112.957)
@@ -1095,6 +1569,13 @@ top_level = true
 
 [node name="OmniLight3D" type="OmniLight3D" parent="world/static/left_wing"]
 transform = Transform3D(-8.9407e-08, 0, 1, 0, 1, 0, -1, 0, -8.9407e-08, -0.24408, 3.18919, -3.12936)
+light_specular = 0.0
+shadow_enabled = true
+omni_range = 5.03005
+omni_attenuation = -2.0
+
+[node name="OmniLight3D6" type="OmniLight3D" parent="world/static/left_wing"]
+transform = Transform3D(-8.9407e-08, 0, 1, 0, 1, 0, -1, 0, -8.9407e-08, -20.2441, 6.18919, 15.8706)
 light_specular = 0.0
 shadow_enabled = true
 omni_range = 5.03005
@@ -1673,6 +2154,138 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
 [node name="straight_node4" parent="puzzle_viewport_container/puzzle_viewport/puzzles/C_2" instance=ExtResource("11_rm1dj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
 
+[node name="C_3" type="Node3D" parent="puzzle_viewport_container/puzzle_viewport/puzzles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -100, 0, -13)
+script = ExtResource("11_q5ens")
+
+[node name="straight_node" parent="puzzle_viewport_container/puzzle_viewport/puzzles/C_3" instance=ExtResource("11_rm1dj")]
+
+[node name="straight_node2" parent="puzzle_viewport_container/puzzle_viewport/puzzles/C_3" instance=ExtResource("11_rm1dj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+
+[node name="straight_node4" parent="puzzle_viewport_container/puzzle_viewport/puzzles/C_3" instance=ExtResource("11_rm1dj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
+
+[node name="straight_node5" parent="puzzle_viewport_container/puzzle_viewport/puzzles/C_3" instance=ExtResource("11_rm1dj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
+
+[node name="straight_node6" parent="puzzle_viewport_container/puzzle_viewport/puzzles/C_3" instance=ExtResource("11_rm1dj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
+
+[node name="straight_node7" parent="puzzle_viewport_container/puzzle_viewport/puzzles/C_3" instance=ExtResource("11_rm1dj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6)
+
+[node name="C_4" type="Node3D" parent="puzzle_viewport_container/puzzle_viewport/puzzles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -115, 0, -13)
+script = ExtResource("11_q5ens")
+
+[node name="straight_node" parent="puzzle_viewport_container/puzzle_viewport/puzzles/C_4" instance=ExtResource("11_rm1dj")]
+
+[node name="straight_node2" parent="puzzle_viewport_container/puzzle_viewport/puzzles/C_4" instance=ExtResource("11_rm1dj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+
+[node name="straight_node4" parent="puzzle_viewport_container/puzzle_viewport/puzzles/C_4" instance=ExtResource("11_rm1dj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
+
+[node name="straight_node5" parent="puzzle_viewport_container/puzzle_viewport/puzzles/C_4" instance=ExtResource("11_rm1dj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -3)
+
+[node name="straight_node6" parent="puzzle_viewport_container/puzzle_viewport/puzzles/C_4" instance=ExtResource("11_rm1dj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -3)
+
+[node name="straight_node7" parent="puzzle_viewport_container/puzzle_viewport/puzzles/C_4" instance=ExtResource("11_rm1dj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -3)
+
+[node name="straight_node8" parent="puzzle_viewport_container/puzzle_viewport/puzzles/C_4" instance=ExtResource("11_rm1dj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -3)
+
+[node name="straight_node9" parent="puzzle_viewport_container/puzzle_viewport/puzzles/C_4" instance=ExtResource("11_rm1dj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -3)
+
+[node name="straight_node10" parent="puzzle_viewport_container/puzzle_viewport/puzzles/C_4" instance=ExtResource("11_rm1dj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -2)
+
+[node name="straight_node11" parent="puzzle_viewport_container/puzzle_viewport/puzzles/C_4" instance=ExtResource("11_rm1dj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -1)
+
+[node name="straight_node12" parent="puzzle_viewport_container/puzzle_viewport/puzzles/C_4" instance=ExtResource("11_rm1dj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+
+[node name="D_1" type="Node3D" parent="puzzle_viewport_container/puzzle_viewport/puzzles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -125, 0, -13)
+script = ExtResource("11_q5ens")
+
+[node name="straight_node2" parent="puzzle_viewport_container/puzzle_viewport/puzzles/D_1" instance=ExtResource("11_rm1dj")]
+
+[node name="straight_node3" parent="puzzle_viewport_container/puzzle_viewport/puzzles/D_1" instance=ExtResource("11_rm1dj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1)
+
+[node name="straight_node4" parent="puzzle_viewport_container/puzzle_viewport/puzzles/D_1" instance=ExtResource("11_rm1dj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -1)
+
+[node name="straight_node5" parent="puzzle_viewport_container/puzzle_viewport/puzzles/D_1" instance=ExtResource("11_rm1dj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -2)
+
+[node name="straight_node6" parent="puzzle_viewport_container/puzzle_viewport/puzzles/D_1" instance=ExtResource("11_rm1dj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -3)
+
+[node name="straight_node7" parent="puzzle_viewport_container/puzzle_viewport/puzzles/D_1" instance=ExtResource("11_rm1dj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -4)
+
+[node name="straight_node8" parent="puzzle_viewport_container/puzzle_viewport/puzzles/D_1" instance=ExtResource("11_rm1dj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -5)
+
+[node name="straight_node9" parent="puzzle_viewport_container/puzzle_viewport/puzzles/D_1" instance=ExtResource("11_rm1dj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -6)
+
+[node name="straight_node10" parent="puzzle_viewport_container/puzzle_viewport/puzzles/D_1" instance=ExtResource("11_rm1dj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -7)
+
+[node name="straight_node11" parent="puzzle_viewport_container/puzzle_viewport/puzzles/D_1" instance=ExtResource("11_rm1dj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -8)
+
+[node name="straight_node12" parent="puzzle_viewport_container/puzzle_viewport/puzzles/D_1" instance=ExtResource("11_rm1dj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -9)
+
+[node name="straight_node13" parent="puzzle_viewport_container/puzzle_viewport/puzzles/D_1" instance=ExtResource("11_rm1dj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -9)
+
+[node name="straight_node14" parent="puzzle_viewport_container/puzzle_viewport/puzzles/D_1" instance=ExtResource("11_rm1dj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -9)
+
+[node name="straight_node15" parent="puzzle_viewport_container/puzzle_viewport/puzzles/D_1" instance=ExtResource("11_rm1dj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -8)
+
+[node name="straight_node16" parent="puzzle_viewport_container/puzzle_viewport/puzzles/D_1" instance=ExtResource("11_rm1dj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -7)
+
+[node name="straight_node17" parent="puzzle_viewport_container/puzzle_viewport/puzzles/D_1" instance=ExtResource("11_rm1dj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -6)
+
+[node name="straight_node18" parent="puzzle_viewport_container/puzzle_viewport/puzzles/D_1" instance=ExtResource("11_rm1dj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -5)
+
+[node name="straight_node19" parent="puzzle_viewport_container/puzzle_viewport/puzzles/D_1" instance=ExtResource("11_rm1dj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -4)
+
+[node name="straight_node20" parent="puzzle_viewport_container/puzzle_viewport/puzzles/D_1" instance=ExtResource("11_rm1dj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -3)
+
+[node name="straight_node21" parent="puzzle_viewport_container/puzzle_viewport/puzzles/D_1" instance=ExtResource("11_rm1dj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -2)
+
+[node name="straight_node22" parent="puzzle_viewport_container/puzzle_viewport/puzzles/D_1" instance=ExtResource("11_rm1dj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -1)
+
+[node name="straight_node23" parent="puzzle_viewport_container/puzzle_viewport/puzzles/D_1" instance=ExtResource("11_rm1dj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -1)
+
+[node name="straight_node24" parent="puzzle_viewport_container/puzzle_viewport/puzzles/D_1" instance=ExtResource("11_rm1dj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -1)
+
+[node name="straight_node25" parent="puzzle_viewport_container/puzzle_viewport/puzzles/D_1" instance=ExtResource("11_rm1dj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 0)
+
 [connection signal="interacted" from="world/remote_pickup" to="world/controls_A_1/CollisionShape3D" method="activate"]
 [connection signal="puzzle_complete" from="puzzle_viewport_container/puzzle_viewport/puzzles/A_1" to="world/controls_A_1/CollisionShape3D" method="deactivate"]
 [connection signal="puzzle_complete" from="puzzle_viewport_container/puzzle_viewport/puzzles/A_1" to="world/doorframe_2/door2" method="open_door"]
@@ -1687,6 +2300,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
 [connection signal="puzzle_complete" from="puzzle_viewport_container/puzzle_viewport/puzzles/B_4" to="world/doorframe_9/door_B_4" method="open_door"]
 [connection signal="puzzle_complete" from="puzzle_viewport_container/puzzle_viewport/puzzles/C_1" to="world/doorframe_10/door_C_1" method="open_door"]
 [connection signal="puzzle_complete" from="puzzle_viewport_container/puzzle_viewport/puzzles/C_2" to="world/doorframe_11/door_C_2" method="open_door"]
+[connection signal="puzzle_complete" from="puzzle_viewport_container/puzzle_viewport/puzzles/C_3" to="world/doorframe_12/door_C_3" method="open_door"]
+[connection signal="puzzle_complete" from="puzzle_viewport_container/puzzle_viewport/puzzles/C_4" to="world/doorframe_13/door_C_4" method="open_door"]
+[connection signal="puzzle_complete" from="puzzle_viewport_container/puzzle_viewport/puzzles/C_4" to="world/doorframe_14/door_C_4" method="open_door"]
+[connection signal="puzzle_complete" from="puzzle_viewport_container/puzzle_viewport/puzzles/D_1" to="world/doorframe_15/door_D_1" method="open_door"]
 
 [editable path="world/static/left_wing/wall_brick_29"]
 [editable path="world/static/left_wing/wall_brick_30"]
