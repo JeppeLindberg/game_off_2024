@@ -1,37 +1,19 @@
-<p align="center"><img src="icon.png"/></p>
+Explore the strange castle, using the artifact to solve the mysteries it presents.
 
-# Starter Kit FPS
+Controls:
+WASD: Movement
+Mouse: Aim
+E: Bring up the artifact
+Mouse button 1: Activate artifact
+E again: Accept solution
+A/D with artifact out: Rotate indicator
 
-This package includes a basic template for a first person shooter in Godot 4.3 (stable). Includes features like;
+Resources:
+Kenny's FPS controller
 
-- Character controller
-- Weapons, switching weapons
-- Enemies
-- Sprites and 3D Models _(CC0 licensed)_
+Made in 1 month for Gameoff jam 2024 https://itch.io/jam/game-off-2024
 
-### Screenshot
+Game: https://jeppe-lindberg.itch.io/the-artifact
 
-<p align="center"><img src="screenshots/screenshot.png"/></p>
+Submission: https://itch.io/jam/game-off-2024/rate/3084672
 
-### Controls
-
-| Key | Command |
-| --- | --- |
-| <kbd>W</kbd> <kbd>A</kbd> <kbd>S</kbd> <kbd>D</kbd> | Movement |
-| <kbd>Spacebar</kbd> | Jump |
-| <kbd>Left mouse button</kbd> | Shoot |
-| <kbd>E</kbd> | Switch weapon |
-
-### License
-
-MIT License
-
-Copyright (c) 2024 Kenney
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-Assets included in this package (2D sprites, 3D models and sound effects) are [CC0 licensed](https://creativecommons.org/publicdomain/zero/1.0/)
