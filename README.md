@@ -1,11 +1,11 @@
 Explore the strange castle, using the artifact to solve the mysteries it presents.
 
-Controls:
-WASD: Movement
-Mouse: Aim
-E: Bring up the artifact
-Mouse button 1: Activate artifact
-E again: Accept solution
+Controls:  
+WASD: Movement  
+Mouse: Aim  
+E: Bring up the artifact  
+Mouse button 1: Activate artifact  
+E again: Accept solution  
 A/D with artifact out: Rotate indicator
 
 Resources:
