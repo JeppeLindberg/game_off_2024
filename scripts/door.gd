@@ -3,6 +3,7 @@ extends Node3D
 
 var target_rotation = 0.0;
 var _upright: Basis
+var _success_audio_played = false
 
 @export var success_audio: AudioStreamPlayer3D
 
@@ -15,7 +16,9 @@ func open_door():
 	var collider: CollisionShape3D = get_node('door/static_body/collider')
 	collider.disabled = true;
 	target_rotation = 77.0
-	success_audio.play()
+	if not _success_audio_played:
+		success_audio.play()
+		_success_audio_played = true
 
 func _physics_process(delta: float) -> void:
 	target_rotation = fmod(target_rotation, 360)
