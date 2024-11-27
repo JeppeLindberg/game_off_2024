@@ -8,7 +8,7 @@ Mouse button 1: Activate artifact
 E again: Accept solution  
 A/D with artifact out: Rotate indicator
 
-Resources:
+Resources:  
 Kenny's FPS controller
 
 Made in 1 month for Gameoff jam 2024 https://itch.io/jam/game-off-2024
