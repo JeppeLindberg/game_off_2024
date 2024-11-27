@@ -16,6 +16,7 @@ func reset():
 	position = base_position
 	_first_accept = true
 	_rotation = 0.0
+	visible = true;
 	for child in get_children():
 		child.queue_free()
 

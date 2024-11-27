@@ -12,10 +12,12 @@ var active = false
 var accept_recieved = false
 @export var glow_curve: Curve
 var glow_start_time = 0.0
+var target_modulate_history = [false, false]
 
 @export var path_container: Control
 @export var sub_viewport :SubViewport
 @export var mesh_instance: MeshInstance3D
+@export var accept_audio: AudioStreamPlayer
 
 # func _ready() -> void:
 # 	RenderingServer.connect('frame_post_draw', _on_frame_post_draw)
@@ -31,6 +33,11 @@ func _process(_delta: float) -> void:
 	for child in children:
 		if child is Sprite3D:
 			child.modulate = Color(1, 1, 1, target_modulate)
+
+	target_modulate_history.pop_back()
+	target_modulate_history.insert(0, target_modulate > 0.1)
+	if target_modulate_history[0] == false and target_modulate_history[1] == true:
+		path_container.visible = false
 
 func activate():
 	active = true
@@ -56,6 +63,7 @@ func deactivate():
 		glow_start_time = main.curr_secs()
 		for child in shine_container.get_children():
 			child.initialized = false
+		accept_audio.playing = true
 
 	detector.complete()
 
@@ -86,13 +94,3 @@ func input_right():
 	detector.detector_set_rotation(indicator.target_rotation)
 	path_container.path_set_rotation(indicator.target_rotation)
 
-# func _on_frame_post_draw():
-# 	var viewport_texture:ViewportTexture = sub_viewport.get_texture();
-
-# 	var mat = StandardMaterial3D.new()
-# 	mat.albedo_texture = viewport_texture
-# 	mat.transparency = viewport_texture
-
-# 	mesh_instance.set_surface_override_material(0, mat);
-
-# 	RenderingServer.disconnect('frame_post_draw', _on_frame_post_draw)

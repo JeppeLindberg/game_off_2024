@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://5kpoq6t5t0q2"]
+
+[ext_resource type="PackedScene" uid="uid://cargrjondw20s" path="res://models/you_win.glb" id="1_wsx7t"]
+[ext_resource type="Material" uid="uid://c57y7frk8fxs1" path="res://materials/you_win_unlit.tres" id="2_v2qit"]
+
+[node name="you_win" instance=ExtResource("1_wsx7t")]
+
+[node name="you_win" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 0, 0)
+surface_material_override/0 = ExtResource("2_v2qit")

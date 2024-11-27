@@ -63,6 +63,9 @@ exclude_parent = false
 target_position = Vector3(0, 0, -3)
 collide_with_areas = true
 
+[node name="listener" type="AudioListener3D" parent="head"]
+current = true
+
 [node name="shadow" type="Decal" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.9, 0)
 size = Vector3(1, 2, 1)

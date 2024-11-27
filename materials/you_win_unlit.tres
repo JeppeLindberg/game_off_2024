@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://c57y7frk8fxs1"]
+
+[ext_resource type="Texture2D" uid="uid://mqf86r1qnrkg" path="res://models/textures/you_win.png" id="1_r7hua"]
+
+[resource]
+resource_name = "shared_material.001"
+cull_mode = 2
+shading_mode = 0
+albedo_texture = ExtResource("1_r7hua")

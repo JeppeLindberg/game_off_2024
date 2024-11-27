@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://84xfupcwvo8l"]
+[gd_scene load_steps=15 format=3 uid="uid://84xfupcwvo8l"]
 
 [ext_resource type="Script" path="res://scripts/remote.gd" id="1_8i1lf"]
 [ext_resource type="PackedScene" uid="uid://cgip33o3bf8in" path="res://prefabs/artifact_base_2.tscn" id="2_2nqvk"]
@@ -12,17 +12,19 @@
 [ext_resource type="Material" uid="uid://c40jewqy64cww" path="res://materials/path_billboard.tres" id="9_g3urr"]
 [ext_resource type="PackedScene" uid="uid://dvmk3jx5tq45s" path="res://prefabs/path_piece.tscn" id="9_npj4y"]
 [ext_resource type="Script" path="res://scripts/path_container.gd" id="9_tnije"]
+[ext_resource type="AudioStream" uid="uid://did2wijxcy33m" path="res://sounds/BluezoneCorp_alien_interface_bluezone_BC0300_alien_interface_sci_fi_transition_004.wav" id="13_37i5l"]
 
 [sub_resource type="Curve" id="Curve_54ys1"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.153465, 1), 0.0, 0.0, 0, 0, Vector2(0.633663, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 4
 
-[node name="remote" type="Node3D" node_paths=PackedStringArray("path_container", "sub_viewport", "mesh_instance")]
+[node name="remote" type="Node3D" node_paths=PackedStringArray("path_container", "sub_viewport", "mesh_instance", "accept_audio")]
 script = ExtResource("1_8i1lf")
 glow_curve = SubResource("Curve_54ys1")
 path_container = NodePath("path_viewport_container/path_viewport/path_container")
 sub_viewport = NodePath("path_viewport_container/path_viewport")
 mesh_instance = NodePath("path_container/path_billboard/path_billboard")
+accept_audio = NodePath("accept_audio")
 
 [node name="artifact_base" parent="." instance=ExtResource("2_2nqvk")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
@@ -120,5 +122,9 @@ transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 [node name="path_billboard" parent="path_container/path_billboard" index="0"]
 layers = 2
 surface_material_override/0 = ExtResource("9_g3urr")
+
+[node name="accept_audio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_37i5l")
+volume_db = -10.0
 
 [editable path="path_container/path_billboard"]
